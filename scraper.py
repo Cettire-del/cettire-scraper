@@ -120,19 +120,18 @@ def generate_item_html(item):
     return html
 
 
-def build_email_html(price_drops, ballstars, superstars, avg_price, last_avg):
+def build_email_html(price_drops, new_targets, ballstars, superstars, avg_price, last_avg):
     now = datetime.now(timezone.utc).strftime("%d %b %Y, %H:%M UTC")
 
     html = f"""
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #f8f9fa; padding: 20px; border-radius: 12px;">
         <div style="background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 24px; border-radius: 10px; margin-bottom: 16px;">
-            <h1 style="margin: 0 0 4px 0; font-size: 20px;">👟 Golden Goose Watchlist</h1>
-            <p style="margin: 0; opacity: 0.7; font-size: 13px;">Size 40/41 Deal Tracker</p>
+            <h1 style="margin: 0 0 4px 0; font-size: 20px;">👟 Golden Goose Alert</h1>
+            <p style="margin: 0; opacity: 0.7; font-size: 13px;">Size 40/41 Updates Found</p>
             <p style="margin: 0; opacity: 0.7; font-size: 11px; margin-top: 4px;">{now}</p>
         </div>
     """
 
-    # Add Market Overview 
     trend_html = ""
     if last_avg > 0:
         diff = avg_price - last_avg
@@ -151,21 +150,28 @@ def build_email_html(price_drops, ballstars, superstars, avg_price, last_avg):
 
     if price_drops:
         html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #007bff;">
-            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #007bff;">⬇️ Target Price Drops</h2>"""
+            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #007bff;">⬇️ Priority Price Drops</h2>"""
         for item in price_drops:
+            html += generate_item_html(item)
+        html += "</div>"
+        
+    if new_targets:
+        html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #8e44ad;">
+            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #8e44ad;">✨ New Priority Models</h2>"""
+        for item in new_targets:
             html += generate_item_html(item)
         html += "</div>"
 
     if ballstars:
         html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #2d8f2d;">
-            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #2d8f2d;">🟢 Top 5 Ball Stars (Valid in 40)</h2>"""
+            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #2d8f2d;">🟢 Top 5 Market Ball Stars (Valid in 40)</h2>"""
         for item in ballstars:
             html += generate_item_html(item)
         html += "</div>"
 
     if superstars:
         html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #f39c12;">
-            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #d35400;">🔥 Top 5 Super-Stars (Valid in 41)</h2>"""
+            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #d35400;">🔥 Top 5 Market Super-Stars (Valid in 41)</h2>"""
         for item in superstars:
             html += generate_item_html(item)
         html += "</div>"
@@ -240,9 +246,8 @@ def main():
     known_prices = [val for doc in known.values() for key, val in doc.items() if key in ("price_40", "price_41") and val]
     last_avg = sum(known_prices) / len(known_prices) if known_prices else 0
 
-    # Detect Price Drops & State Syncing
+    # Detect Price Drops & Missing Inventory
     price_drops = []
-    
     for u, doc in current.items():
         if u in known:
             k_40 = known[u].get("price_40")
@@ -256,12 +261,19 @@ def main():
             
             if drop_40 > 0 or drop_41 > 0:
                 name = doc["text"].lower()
-                # Only alert drops for strictly targeted items
                 if 'ball' in name or 'super' in name:
                     drop_item = dict(doc)
                     drop_item["drop_40"] = drop_40
                     drop_item["drop_41"] = drop_41
                     price_drops.append(drop_item)
+
+    # Detect completely new target inventory
+    new_targets = []
+    for u, doc in current.items():
+        if u not in known:
+            name = doc["text"].lower()
+            if ('ball' in name and doc["price_40"] is not None) or ('super' in name and doc["price_41"] is not None):
+                new_targets.append(doc)
 
     # Filter & Sort strictly Ball Stars (Size 40 Required)
     ballstars = [d for d in current.values() if 'ball' in d["text"].lower() and d["price_40"] is not None]
@@ -271,16 +283,21 @@ def main():
     superstars = [d for d in current.values() if 'super' in d["text"].lower() and d["price_41"] is not None]
     superstars = sorted(superstars, key=lambda x: x["price_41"])[:5]
 
-    if price_drops or ballstars or superstars:
-        html = build_email_html(price_drops, ballstars, superstars, avg_price, last_avg)
+    # MASTER TRIGGER: Only execute if something new happened
+    if price_drops or new_targets:
+        html = build_email_html(price_drops, new_targets, ballstars, superstars, avg_price, last_avg)
+        
         subject_parts = []
         if price_drops: subject_parts.append(f"{len(price_drops)} Price Drops")
-        subject = f"Cettire Hotlist: {', '.join(subject_parts)}" if subject_parts else "Cettire Hotlist Tracker"
+        if new_targets: subject_parts.append(f"{len(new_targets)} New")
         
+        subject = f"Cettire Deal Alert: {', '.join(subject_parts)}"
         send_email(subject, html)
-        print("Completed successfully.")
+        print("Alert email sent.")
+    else:
+        print("No new updates. Email skipped.")
 
-    # Save lightweight state persistence
+    # Always save state persistence even if no email was sent
     with open(JSON_FILE, "w") as f:
         json.dump(current, f, indent=4)
 
