@@ -120,7 +120,7 @@ def generate_item_html(item):
     return html
 
 
-def build_email_html(price_drops, ballstars, superstars):
+def build_email_html(price_drops, ballstars, superstars, avg_price, last_avg):
     now = datetime.now(timezone.utc).strftime("%d %b %Y, %H:%M UTC")
 
     html = f"""
@@ -129,6 +129,23 @@ def build_email_html(price_drops, ballstars, superstars):
             <h1 style="margin: 0 0 4px 0; font-size: 20px;">👟 Golden Goose Watchlist</h1>
             <p style="margin: 0; opacity: 0.7; font-size: 13px;">Size 40/41 Deal Tracker</p>
             <p style="margin: 0; opacity: 0.7; font-size: 11px; margin-top: 4px;">{now}</p>
+        </div>
+    """
+
+    # Add Market Overview 
+    trend_html = ""
+    if last_avg > 0:
+        diff = avg_price - last_avg
+        pct = (diff / last_avg) * 100
+        arrow = "▲" if diff > 0 else "▼" if diff < 0 else "–"
+        color = "#cc3333" if diff > 0 else "#2d8f2d" if diff < 0 else "#666"
+        trend_html = f"<span style='color:{color};font-weight:bold'>{arrow} {abs(pct):.1f}%</span> vs last check"
+
+    html += f"""
+        <div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-align: center;">
+            <div style="font-size: 12px; color: #666; margin-bottom: 4px;">Global Market Average (sizes 40 & 41)</div>
+            <div style="font-size: 28px; font-weight: bold; color: #1a1a2e;">€{avg_price:,.0f}</div>
+            <div style="font-size: 12px; color: #666; margin-top: 4px;">{trend_html}</div>
         </div>
     """
 
@@ -216,6 +233,13 @@ def main():
              current[url]["img"] = item["img"]
         current[url]["price_41"] = parse_price(item["text"])
 
+    # Map global averages before slicing
+    current_prices = [val for doc in current.values() for key, val in doc.items() if key in ("price_40", "price_41") and val]
+    avg_price = sum(current_prices) / len(current_prices) if current_prices else 0
+    
+    known_prices = [val for doc in known.values() for key, val in doc.items() if key in ("price_40", "price_41") and val]
+    last_avg = sum(known_prices) / len(known_prices) if known_prices else 0
+
     # Detect Price Drops & State Syncing
     price_drops = []
     
@@ -248,7 +272,7 @@ def main():
     superstars = sorted(superstars, key=lambda x: x["price_41"])[:5]
 
     if price_drops or ballstars or superstars:
-        html = build_email_html(price_drops, ballstars, superstars)
+        html = build_email_html(price_drops, ballstars, superstars, avg_price, last_avg)
         subject_parts = []
         if price_drops: subject_parts.append(f"{len(price_drops)} Price Drops")
         subject = f"Cettire Hotlist: {', '.join(subject_parts)}" if subject_parts else "Cettire Hotlist Tracker"
