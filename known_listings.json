@@ -30,6 +30,11 @@
             "date": "12 Apr 2026 14:11",
             "avg_price": 407.61,
             "count": 6
+        },
+        {
+            "date": "12 Apr 2026 14:15",
+            "avg_price": 407.61,
+            "count": 6
         }
     ]
 }
