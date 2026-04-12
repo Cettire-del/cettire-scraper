@@ -7,7 +7,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from playwright.sync_api import sync_playwright
 
-URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose%20sneakers&refinementList%5Btags%5D%5B0%5D=Shoes&refinementList%5BSize%5D%5B0%5D=EU40&refinementList%5BSize%5D%5B1%5D=EU41&page=2"
+# IMPORTANT: Reset back to page=1 so Cettire's state boots up properly!
+URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose%20sneakers&refinementList%5Btags%5D%5B0%5D=Shoes&refinementList%5BSize%5D%5B0%5D=EU40&refinementList%5BSize%5D%5B1%5D=EU41&page=1"
 
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
@@ -129,6 +130,17 @@ def build_email_html(current, new_items, removed_items, price_history):
     return html
 
 
+def count_products(page):
+    """Helper to count how many valid product links are currently attached to the DOM."""
+    return page.evaluate("""() => {
+        let count = 0;
+        document.querySelectorAll('a').forEach(a => {
+            if (a.href && a.href.includes('/products/')) count++;
+        });
+        return count;
+    }""")
+
+
 def main():
     data = {"listings": {}, "price_history": []}
     if os.path.exists(JSON_FILE):
@@ -150,52 +162,59 @@ def main():
     print("Launching browser...")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
+        # Using a convincing user-agent to avoid invisible blocks
         page = browser.new_page(
             user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
+        
+        # Set viewport to mimic a large desktop screen
+        page.set_viewport_size({"width": 1920, "height": 1080})
 
-        print("Navigating to Cettire...")
+        print("Navigating to Cettire (Page 1)...")
         page.goto(URL, timeout=60000)
         page.wait_for_timeout(8000)
 
-        # DEBUGGING X-RAY 
-        print("======== BOT X-RAY ========")
-        page_title = page.evaluate("document.title")
-        print(f"PAGE TITLE SEEN BY BOT: {page_title}")
+        print("Scrolling realistically to aggressively load React components...")
         
-        all_links = page.evaluate("Array.from(document.querySelectorAll('a')).map(a => a.href)")
-        print(f"TOTAL LINKS ON PAGE: {len(all_links)}")
+        last_product_count = 0
+        unchanged_checks = 0
+        max_loops = 30 # absolute safety fallback so it doesn't run forever
         
-        print("FIRST 30 LINKS FOUND:")
-        for link in all_links[:30]:
-            print(f" - {link}")
-        print("===========================")
-
-        print("Scrolling page to load all items...")
-        last_height = page.evaluate("document.body.scrollHeight")
-        while True:
-            # Scroll to the absolute bottom of the page
-            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-            page.wait_for_timeout(3000) # Wait for network load
+        for i in range(max_loops):
+            # 1. Scroll down smoothly in chunks (bouncing down the page)
+            page.evaluate("window.scrollBy(0, 3000)")
+            page.wait_for_timeout(2000)
             
-            # Click any load more buttons if they unexpectedly appear
+            # 2. Try clicking literally anything that says 'Mehr laden' or 'Load More'
+            # By not using the strictly restrictive 'button' selector, we catch <div> and <a> tags too.
             try:
-                load_btn = page.query_selector('text="Mehr laden"') or page.query_selector('text="Load More"')
-                if load_btn and load_btn.is_visible():
-                    load_btn.click()
-                    page.wait_for_timeout(2000)
+                load_more_elements = page.query_selector_all('text=/Mehr laden|Load More/i')
+                for el in load_more_elements:
+                    if el.is_visible():
+                        el.scroll_into_view_if_needed()
+                        el.click()
+                        print(f"Clicked bottom loader (pass {i+1})")
+                        page.wait_for_timeout(3000)
+                        break
             except Exception:
                 pass
                 
-            new_height = page.evaluate("document.body.scrollHeight")
-            if new_height == last_height:
-                # Give it one more final scroll check just in case
-                page.wait_for_timeout(2000)
-                if page.evaluate("document.body.scrollHeight") == last_height:
+            # 3. Dynamic Stop Condition: Check if we are still finding new shoes
+            current_count = count_products(page)
+            print(f"Extraction Pass {i+1}: Found {current_count} products so far...")
+            
+            if current_count == last_product_count and current_count > 0:
+                unchanged_checks += 1
+                # If we scrolled/clicked 3 times in a row and got 0 new products, we are totally done.
+                if unchanged_checks >= 3:
+                    print("Hit the bottom of the list. All listings loaded.")
                     break
-            last_height = new_height
+            else:
+                unchanged_checks = 0 # Reset if we found new ones
+                
+            last_product_count = current_count
 
-        print("Extracting products...")
+        print("Extracting final products...")
         products = page.evaluate(
             """() => {
             const items = [];
@@ -217,7 +236,7 @@ def main():
     for prod in products:
         current[prod["url"]] = prod
 
-    print(f"Total products found: {len(current)}")
+    print(f"Total unique products correctly identified: {len(current)}")
 
     new_items = [d for u, d in current.items() if u not in known]
     removed_items = [d for u, d in known.items() if u not in current]
@@ -226,9 +245,11 @@ def main():
     avg_price = sum(prices) / len(prices) if prices else 0
     now = datetime.now(timezone.utc).strftime("%d %b %Y %H:%M")
     
+    # Precaution: don't pollute price history if a scrape entirely fails
     if current:
         price_history.append({"date": now, "avg_price": round(avg_price, 2), "count": len(current)})
 
+    # STILL sending the email every time for now per your request!
     if True:
         print(f"{len(new_items)} NEW, {len(removed_items)} REMOVED")
         html = build_email_html(current, new_items, removed_items, price_history)
