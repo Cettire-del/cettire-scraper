@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from playwright.sync_api import sync_playwright
 
-URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose%20sneakers"
+URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose&refinementList%5Btags%5D%5B0%5D=Shoes&refinementList%5BColor%5D=&refinementList%5Bvendor%5D=&refinementList%5BSize%5D%5B0%5D=US8&refinementList%5BSize%5D%5B1%5D=UK7&refinementList%5BSize%5D%5B2%5D=IT41&refinementList%5BSize%5D%5B3%5D=EU41&refinementList%5BSize%5D%5B4%5D=BR39&refinementList%5BSize%5D%5B5%5D=KR260&refinementList%5BSize%5D%5B6%5D=JP26&refinementList%5BSize%5D%5B7%5D=FR42&refinementList%5BSize%5D%5B8%5D=US7&refinementList%5BSize%5D%5B9%5D=UK6&refinementList%5BSize%5D%5B10%5D=IT40&refinementList%5BSize%5D%5B11%5D=EU40&refinementList%5BSize%5D%5B12%5D=BR38&refinementList%5BSize%5D%5B13%5D=KR250&refinementList%5BSize%5D%5B14%5D=JP25&refinementList%5BSize%5D%5B15%5D=FR41&page=1"
 
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
@@ -33,7 +33,6 @@ def is_target_model(text):
 
 
 def generate_chart_url(history):
-    # Only draw a chart if we have history pointing to a change
     if not history or len(history) < 2:
         return ""
         
@@ -51,7 +50,7 @@ def generate_chart_url(history):
                 "borderColor": "#007bff",
                 "backgroundColor": "rgba(0,123,255,0.1)",
                 "fill": True,
-                "tension": 0.3, # Soft curve
+                "tension": 0.3,
                 "pointRadius": 4,
                 "pointBackgroundColor": "#007bff"
             }]
@@ -229,7 +228,6 @@ def main():
             pass
 
     known = data["listings"]
-    # Retroactively add graph history tracking to old DB items safely mapping them
     for k, v in known.items():
         if "price" not in v and "text" in v:
             v["price"] = parse_price(v["text"])
@@ -287,7 +285,6 @@ def main():
                 
             last_product_count = current_count
 
-        # Extractor updated to pull high-res Product Thumbnail Source (img.src)
         products = page.evaluate(
             """() => {
             const items = [];
@@ -312,7 +309,6 @@ def main():
         p_price = parse_price(prod["text"])
         prod["price"] = p_price
         
-        # Build individual price history for graph lines
         hist = []
         if prod["url"] in known:
             hist = known[prod["url"]].get("history", [])
@@ -321,7 +317,6 @@ def main():
                     hist.append({"date": now_short, "price": p_price})
                 else:
                     last_entry = hist[-1]
-                    # Append a new node ONLY if the physical price changed OR a 24H new day flipped
                     if last_entry["price"] != p_price:
                         hist.append({"date": now_short, "price": p_price})
                     elif last_entry["date"].split(" ")[0] != now_short.split(" ")[0]:
@@ -333,7 +328,6 @@ def main():
         prod["history"] = hist
         current[prod["url"]] = prod
 
-    # Identify individual Price Drops & encode Graph Payloads
     price_drops = []
     for u, cur_doc in current.items():
         if u in known:
@@ -360,8 +354,7 @@ def main():
     if current:
         price_history.append({"date": now, "avg_price": round(avg_price, 2), "count": len(current)})
 
-    # STILL AT 'if True' - Remember to flip to 'if new_targets or price_drops' once verified!
-    if True: 
+    if True:  # Change to: if new_targets or price_drops:
         html = build_email_html(current, new_targets, price_drops, removed_items, price_history)
         
         parts = []
@@ -372,7 +365,6 @@ def main():
             
         subject = f"Cettire Alert: {', '.join(parts)}" if parts else "Cettire Report: Tracker Update"
         send_email(subject, html)
-
 
     data["listings"] = current
     data["price_history"] = price_history
