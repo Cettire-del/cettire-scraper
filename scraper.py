@@ -191,7 +191,7 @@ def main():
         print("Scrolling realistically to aggressively load React components...")
         last_product_count = 0
         unchanged_checks = 0
-        max_loops = 30 
+        max_loops = 100 
         
         for i in range(max_loops):
             # Gentle, short scrolls down the page
