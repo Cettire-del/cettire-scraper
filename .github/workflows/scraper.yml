@@ -2,12 +2,12 @@ name: Cettire Scraper
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
-  workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
+    - cron: '14 * * * *'
+  workflow_dispatch:
 
 jobs:
   scrape:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
