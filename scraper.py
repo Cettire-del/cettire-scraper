@@ -16,7 +16,6 @@ JSON_FILE = "known_listings.json"
 
 
 def parse_price(text):
-    """Extract the lowest (sale) price from listing text like '€422,45€295,71'."""
     prices = re.findall(r"€([\d.,]+)", text)
     parsed = []
     for p in prices:
@@ -55,7 +54,6 @@ def build_email_html(current, new_items, removed_items, price_history):
     min_price = min(prices) if prices else 0
     max_price = max(prices) if prices else 0
 
-    # Price trend
     trend_html = ""
     if len(price_history) >= 2:
         prev_avg = price_history[-2]["avg_price"]
@@ -116,7 +114,6 @@ def build_email_html(current, new_items, removed_items, price_history):
             </div>"""
         html += "</div>"
 
-    # Price history table
     if len(price_history) > 1:
         html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
             <h2 style="margin: 0 0 12px 0; font-size: 16px; color: #1a1a2e;">📈 Price History</h2>
@@ -206,13 +203,12 @@ def main():
     new_items = [d for u, d in current.items() if u not in known]
     removed_items = [d for u, d in known.items() if u not in current]
 
-    # Update price history
     prices = [p for p in (parse_price(d["text"]) for d in current.values()) if p]
     avg_price = sum(prices) / len(prices) if prices else 0
     now = datetime.now(timezone.utc).strftime("%d %b %Y %H:%M")
     price_history.append({"date": now, "avg_price": round(avg_price, 2), "count": len(current)})
 
-    if new_items or removed_items:
+    if True:
         print(f"{len(new_items)} NEW, {len(removed_items)} REMOVED")
         html = build_email_html(current, new_items, removed_items, price_history)
         parts = []
@@ -220,14 +216,9 @@ def main():
             parts.append(f"{len(new_items)} new")
         if removed_items:
             parts.append(f"{len(removed_items)} removed")
-        send_email(
-            f"Cettire Alert: {', '.join(parts)} Golden Goose listing(s)",
-            html,
-        )
-    else:
-        print("No changes detected.")
+        subject = f"Cettire Alert: {', '.join(parts)} Golden Goose listing(s)" if parts else "Cettire Report: Golden Goose Tracker Update"
+        send_email(subject, html)
 
-    # Always save state (including updated price history)
     data["listings"] = current
     data["price_history"] = price_history
     with open(JSON_FILE, "w") as f:
