@@ -7,7 +7,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from playwright.sync_api import sync_playwright
 
-URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose%20sneakers&refinementList%5Btags%5D%5B0%5D=Shoes&refinementList%5BSize%5D%5B0%5D=EU40&refinementList%5BSize%5D%5B1%5D=EU41&page=1"
+# Using your URL that loads everything up to page 2
+URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose%20sneakers&refinementList%5Btags%5D%5B0%5D=Shoes&refinementList%5BSize%5D%5B0%5D=EU40&refinementList%5BSize%5D%5B1%5D=EU41&page=2"
 
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
@@ -151,36 +152,42 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page(
-            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/120.0.0.0 Safari/537.36"
+            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
 
         print("Navigating to Cettire...")
         page.goto(URL, timeout=60000)
         page.wait_for_timeout(8000)
 
-        clicks = 0
+        print("Scrolling page to load all items...")
+        last_height = page.evaluate("document.body.scrollHeight")
         while True:
-            btn = page.query_selector(
-                'button:has-text("Mehr laden"), '
-                'button:has-text("Load More")'
-            )
-            if not btn or not btn.is_visible():
-                print(f"Done loading after {clicks} clicks.")
-                break
-            btn.scroll_into_view_if_needed()
-            btn.click()
-            clicks += 1
-            print(f"Clicked Mehr laden ({clicks})...")
-            page.wait_for_timeout(3000)
-
-        page.wait_for_timeout(2000)
+            # Scroll to the absolute bottom of the page
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            page.wait_for_timeout(3000) # Wait for network load
+            
+            # Click any load more buttons if they unexpectedly appear
+            try:
+                load_btn = page.query_selector('text="Mehr laden"') or page.query_selector('text="Load More"')
+                if load_btn and load_btn.is_visible():
+                    load_btn.click()
+                    page.wait_for_timeout(2000)
+            except Exception:
+                pass
+                
+            new_height = page.evaluate("document.body.scrollHeight")
+            if new_height == last_height:
+                # Give it one more final scroll check just in case
+                page.wait_for_timeout(2000)
+                if page.evaluate("document.body.scrollHeight") == last_height:
+                    break
+            last_height = new_height
 
         print("Extracting products...")
         products = page.evaluate(
             """() => {
             const items = [];
+            // Finds all links that have /products/ in the URL
             document.querySelectorAll('a').forEach(a => {
                 if (a.href && a.href.includes('/products/')) {
                     const text = a.innerText.replace(/\\n/g, ' ').trim();
@@ -198,7 +205,7 @@ def main():
     for prod in products:
         current[prod["url"]] = prod
 
-    print(f"Total products: {len(current)}")
+    print(f"Total products found: {len(current)}")
 
     new_items = [d for u, d in current.items() if u not in known]
     removed_items = [d for u, d in known.items() if u not in current]
@@ -206,8 +213,12 @@ def main():
     prices = [p for p in (parse_price(d["text"]) for d in current.values()) if p]
     avg_price = sum(prices) / len(prices) if prices else 0
     now = datetime.now(timezone.utc).strftime("%d %b %Y %H:%M")
-    price_history.append({"date": now, "avg_price": round(avg_price, 2), "count": len(current)})
+    
+    # Only append to history if prices exist so we don't skew data
+    if current:
+        price_history.append({"date": now, "avg_price": round(avg_price, 2), "count": len(current)})
 
+    # ALWAYS send email for now
     if True:
         print(f"{len(new_items)} NEW, {len(removed_items)} REMOVED")
         html = build_email_html(current, new_items, removed_items, price_history)
