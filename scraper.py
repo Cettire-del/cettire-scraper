@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from playwright.sync_api import sync_playwright
 
-# IMPORTANT: Reset back to page=1 so Cettire's state boots up properly!
+# Starting fresh on page 1 works perfectly once cookies are accepted
 URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose%20sneakers&refinementList%5Btags%5D%5B0%5D=Shoes&refinementList%5BSize%5D%5B0%5D=EU40&refinementList%5BSize%5D%5B1%5D=EU41&page=1"
 
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
@@ -162,55 +162,66 @@ def main():
     print("Launching browser...")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        # Using a convincing user-agent to avoid invisible blocks
         page = browser.new_page(
             user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
-        
-        # Set viewport to mimic a large desktop screen
         page.set_viewport_size({"width": 1920, "height": 1080})
 
-        print("Navigating to Cettire (Page 1)...")
+        print("Navigating to Cettire...")
         page.goto(URL, timeout=60000)
-        page.wait_for_timeout(8000)
+        page.wait_for_timeout(5000)
+
+        # ====== FIX: SMASH THE COOKIE WALL ======
+        print("Looking for cookie banner...")
+        try:
+            # Look for ANY element containing 'Alle akzeptieren' or 'Accept' and force inject a rapid click
+            cookie_btn = page.query_selector('text=/Alle akzeptieren|Accept All/i')
+            if cookie_btn:
+                print("Found cookie banner! Instantly destroying it using JS execution.")
+                cookie_btn.evaluate("el => el.click()")
+                page.wait_for_timeout(2000)
+                
+                print("Reloading the page to force Cettire to populate the full search results...")
+                page.reload(timeout=60000)
+                page.wait_for_timeout(6000) # Give UI time to paint products
+            else:
+                print("No cookie banner detected.")
+        except Exception as e:
+            print(f"Failed to click cookies (may be fine): {e}")
+        # =========================================
 
         print("Scrolling realistically to aggressively load React components...")
-        
         last_product_count = 0
         unchanged_checks = 0
-        max_loops = 30 # absolute safety fallback so it doesn't run forever
+        max_loops = 30 
         
         for i in range(max_loops):
-            # 1. Scroll down smoothly in chunks (bouncing down the page)
-            page.evaluate("window.scrollBy(0, 3000)")
-            page.wait_for_timeout(2000)
+            # Gentle, short scrolls down the page (1000px at a time instead of 3000px)
+            page.evaluate("window.scrollBy(0, 1000)")
+            page.wait_for_timeout(1500)
             
-            # 2. Try clicking literally anything that says 'Mehr laden' or 'Load More'
-            # By not using the strictly restrictive 'button' selector, we catch <div> and <a> tags too.
+            # Use raw JS to force-click the load more button so invisible popups don't block it
             try:
                 load_more_elements = page.query_selector_all('text=/Mehr laden|Load More/i')
                 for el in load_more_elements:
-                    if el.is_visible():
-                        el.scroll_into_view_if_needed()
-                        el.click()
-                        print(f"Clicked bottom loader (pass {i+1})")
-                        page.wait_for_timeout(3000)
-                        break
+                    # If it exists, nuke it
+                    el.evaluate("el => el.click()")
+                    print(f"Force-Clicked bottom loader using JS (pass {i+1})")
+                    page.wait_for_timeout(2500)
+                    break
             except Exception:
                 pass
                 
-            # 3. Dynamic Stop Condition: Check if we are still finding new shoes
             current_count = count_products(page)
             print(f"Extraction Pass {i+1}: Found {current_count} products so far...")
             
             if current_count == last_product_count and current_count > 0:
                 unchanged_checks += 1
-                # If we scrolled/clicked 3 times in a row and got 0 new products, we are totally done.
                 if unchanged_checks >= 3:
-                    print("Hit the bottom of the list. All listings loaded.")
+                    print("Hit the solid bottom of the list. All listings successfully loaded.")
                     break
             else:
-                unchanged_checks = 0 # Reset if we found new ones
+                unchanged_checks = 0 
                 
             last_product_count = current_count
 
@@ -218,7 +229,6 @@ def main():
         products = page.evaluate(
             """() => {
             const items = [];
-            // Finds all links that have /products/ in the URL
             document.querySelectorAll('a').forEach(a => {
                 if (a.href && a.href.includes('/products/')) {
                     const text = a.innerText.replace(/\\n/g, ' ').trim();
@@ -236,7 +246,7 @@ def main():
     for prod in products:
         current[prod["url"]] = prod
 
-    print(f"Total unique products correctly identified: {len(current)}")
+    print(f"TOTAL FINAL UNIQUE PRODUCTS: {len(current)}")
 
     new_items = [d for u, d in current.items() if u not in known]
     removed_items = [d for u, d in known.items() if u not in current]
@@ -245,11 +255,10 @@ def main():
     avg_price = sum(prices) / len(prices) if prices else 0
     now = datetime.now(timezone.utc).strftime("%d %b %Y %H:%M")
     
-    # Precaution: don't pollute price history if a scrape entirely fails
     if current:
         price_history.append({"date": now, "avg_price": round(avg_price, 2), "count": len(current)})
 
-    # STILL sending the email every time for now per your request!
+    # STILL sending the email every time!
     if True:
         print(f"{len(new_items)} NEW, {len(removed_items)} REMOVED")
         html = build_email_html(current, new_items, removed_items, price_history)
