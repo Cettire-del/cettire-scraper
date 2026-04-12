@@ -1,26 +1,35 @@
 {
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-sneakers-961497287": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-sneakers-961497287",
-        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Sneakers von \u20ac577,15\u20ac449,46"
+    "listings": {
+        "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-sneakers-961497287": {
+            "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-sneakers-961497287",
+            "text": "Neue Saison Golden Goose Deluxe Brand Super Star Sneakers von \u20ac577,15\u20ac449,46"
+        },
+        "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sneakers-959666275": {
+            "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sneakers-959666275",
+            "text": "Neue Saison Golden Goose Deluxe Brand Laufschuhe der \u20ac612,85\u20ac482,62"
+        },
+        "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983308": {
+            "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983308",
+            "text": "Golden Goose Deluxe Brand Soul Star Low-Top-Sneaker \u20ac474,81\u20ac353,14"
+        },
+        "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983280": {
+            "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983280",
+            "text": "Neue Saison Golden Goose Deluxe Brand Soul Star Low-Top-Sneaker \u20ac470,05\u20ac267,34"
+        },
+        "https://www.cettire.com/de/products/golden-goose-deluxe-brand-stardan-low-top-sneakers-959090360": {
+            "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-stardan-low-top-sneakers-959090360",
+            "text": "Neue Saison Golden Goose Deluxe Brand Stardan Low-Top-Sneaker von \u20ac612,85\u20ac450,44"
+        },
+        "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-959695872": {
+            "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-959695872",
+            "text": "Neue Saison Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac648,55\u20ac442,64"
+        }
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sneakers-959666275": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sneakers-959666275",
-        "text": "Neue Saison Golden Goose Deluxe Brand Laufschuhe der \u20ac612,85\u20ac482,62"
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983308": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983308",
-        "text": "Golden Goose Deluxe Brand Soul Star Low-Top-Sneaker \u20ac474,81\u20ac353,14"
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983280": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983280",
-        "text": "Neue Saison Golden Goose Deluxe Brand Soul Star Low-Top-Sneaker \u20ac470,05\u20ac267,34"
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-stardan-low-top-sneakers-959090360": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-stardan-low-top-sneakers-959090360",
-        "text": "Neue Saison Golden Goose Deluxe Brand Stardan Low-Top-Sneaker von \u20ac612,85\u20ac450,44"
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-959695872": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-959695872",
-        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac648,55\u20ac442,64"
-    }
+    "price_history": [
+        {
+            "date": "12 Apr 2026 14:11",
+            "avg_price": 407.61,
+            "count": 6
+        }
+    ]
 }
