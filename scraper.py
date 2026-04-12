@@ -1,3 +1,4 @@
+import json
 import os
 import re
 import smtplib
@@ -13,6 +14,7 @@ URL_41 = BASE_URL + "refinementList%5BSize%5D%5B0%5D=US8&refinementList%5BSize%5
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER") or EMAIL_SENDER
+JSON_FILE = "known_listings.json"
 
 
 def parse_price(text):
@@ -78,53 +80,79 @@ def scrape_dataset(page, url):
     )
 
 
-def build_email_html(top_10):
+def generate_item_html(item):
+    name = re.sub(r"€[\d.,]+", "", item["text"]).strip()
+    name = re.sub(r"\s+", " ", name).strip()
+    
+    img_html = f'<img src="{item["img"]}" style="width: 55px; height: 55px; border-radius: 4px; border: 1px solid #eee; object-fit: cover;">' if item.get("img") else ''
+    
+    p40 = item.get("price_40")
+    p41 = item.get("price_41")
+    
+    p40_str = f"€{p40:,.0f}" if p40 else "N/A"
+    p41_str = f"€{p41:,.0f}" if p41 else "N/A"
+
+    savings_badge = ""
+    if p40 and p41 and p40 != p41:
+        diff = abs(p40 - p41)
+        better_sz = 40 if p40 < p41 else 41
+        savings_badge = f'<span style="background: #fdf2e9; color: #d35400; padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; margin-left: 8px;">💡 Save €{diff:,.0f} in {better_sz}!</span>'
+
+    drop_badge = ""
+    if item.get("drop_40"):
+        drop_badge += f'<span style="background: #e8f4fd; color: #007bff; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-left: 6px;">40 dropped €{item["drop_40"]:,.0f}</span>'
+    if item.get("drop_41"):
+         drop_badge += f'<span style="background: #e8f4fd; color: #007bff; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-left: 6px;">41 dropped €{item["drop_41"]:,.0f}</span>'
+
+    html = f"""
+    <div style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 12px;">
+        {img_html}
+        <div style="flex: 1;">
+            <a href="{item['url']}" style="color: #1a1a2e; text-decoration: none; font-weight: bold; font-size: 13px; display: block; margin-bottom: 4px;">{name} {drop_badge}</a>
+            <div style="font-size: 13px; color: #555; display: flex; align-items: center;">
+                <span style="background: #eee; padding: 2px 6px; border-radius: 4px; margin-right: 6px;">40 ➔ <b>{p40_str}</b></span>
+                <span style="background: #eee; padding: 2px 6px; border-radius: 4px;">41 ➔ <b>{p41_str}</b></span>
+                {savings_badge}
+            </div>
+        </div>
+    </div>
+    """
+    return html
+
+
+def build_email_html(price_drops, ballstars, superstars):
     now = datetime.now(timezone.utc).strftime("%d %b %Y, %H:%M UTC")
 
     html = f"""
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #f8f9fa; padding: 20px; border-radius: 12px;">
         <div style="background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 24px; border-radius: 10px; margin-bottom: 16px;">
-            <h1 style="margin: 0 0 4px 0; font-size: 20px;">👟 Top 10 Priority Golden Goose</h1>
-            <p style="margin: 0; opacity: 0.7; font-size: 13px;">Superstars (Size 41) & Ballstars (Size 40)</p>
+            <h1 style="margin: 0 0 4px 0; font-size: 20px;">👟 Golden Goose Watchlist</h1>
+            <p style="margin: 0; opacity: 0.7; font-size: 13px;">Size 40/41 Deal Tracker</p>
             <p style="margin: 0; opacity: 0.7; font-size: 11px; margin-top: 4px;">{now}</p>
         </div>
-        
-        <div style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #f39c12;">
-            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #d35400;">🔥 Absolute Best Deals</h2>
     """
 
-    for item in top_10:
-        name = re.sub(r"€[\d.,]+", "", item["text"]).strip()
-        name = re.sub(r"\s+", " ", name).strip()
-        
-        img_html = f'<img src="{item["img"]}" style="width: 55px; height: 55px; border-radius: 4px; border: 1px solid #eee; object-fit: cover;">' if item.get("img") else ''
-        
-        p40 = item.get("price_40")
-        p41 = item.get("price_41")
-        
-        p40_str = f"€{p40:,.0f}" if p40 else "N/A"
-        p41_str = f"€{p41:,.0f}" if p41 else "N/A"
+    if price_drops:
+        html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #007bff;">
+            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #007bff;">⬇️ Target Price Drops</h2>"""
+        for item in price_drops:
+            html += generate_item_html(item)
+        html += "</div>"
 
-        savings_badge = ""
-        if p40 and p41 and p40 != p41:
-            diff = abs(p40 - p41)
-            better_sz = 40 if p40 < p41 else 41
-            savings_badge = f'<span style="background: #fdf2e9; color: #d35400; padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; margin-left: 8px;">💡 Save €{diff:,.0f} in {better_sz}!</span>'
+    if ballstars:
+        html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #2d8f2d;">
+            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #2d8f2d;">🟢 Top 5 Ball Stars (Valid in 40)</h2>"""
+        for item in ballstars:
+            html += generate_item_html(item)
+        html += "</div>"
 
-        html += f"""
-        <div style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 12px;">
-            {img_html}
-            <div style="flex: 1;">
-                <a href="{item['url']}" style="color: #1a1a2e; text-decoration: none; font-weight: bold; font-size: 13px; display: block; margin-bottom: 4px;">{name}</a>
-                <div style="font-size: 13px; color: #555; display: flex; align-items: center;">
-                    <span style="background: #eee; padding: 2px 6px; border-radius: 4px; margin-right: 6px;">40 ➔ <b>{p40_str}</b></span>
-                    <span style="background: #eee; padding: 2px 6px; border-radius: 4px;">41 ➔ <b>{p41_str}</b></span>
-                    {savings_badge}
-                </div>
-            </div>
-        </div>
-        """
-
+    if superstars:
+        html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #f39c12;">
+            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #d35400;">🔥 Top 5 Super-Stars (Valid in 41)</h2>"""
+        for item in superstars:
+            html += generate_item_html(item)
+        html += "</div>"
+        
     html += "</div></div>"
     return html
 
@@ -148,6 +176,14 @@ def send_email(subject, html_body):
 
 
 def main():
+    known = {}
+    if os.path.exists(JSON_FILE):
+        try:
+            with open(JSON_FILE, "r") as f:
+                known = json.load(f)
+        except Exception:
+            pass
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page(
@@ -159,48 +195,70 @@ def main():
         raw_41 = scrape_dataset(page, URL_41)
         browser.close()
 
-    combined = {}
+    current = {}
     
     # Process Size 40
     for item in raw_40:
         if not item["text"]: continue
         url = item["url"]
-        if url not in combined:
-            combined[url] = {"url": url, "text": item["text"], "img": item["img"], "price_40": None, "price_41": None}
-        combined[url]["price_40"] = parse_price(item["text"])
+        if url not in current:
+            current[url] = {"url": url, "text": item["text"], "img": item["img"], "price_40": None, "price_41": None}
+        current[url]["price_40"] = parse_price(item["text"])
         
     # Process Size 41
     for item in raw_41:
         if not item["text"]: continue
         url = item["url"]
-        if url not in combined:
-            combined[url] = {"url": url, "text": item["text"], "img": item["img"], "price_40": None, "price_41": None}
-        combined[url]["text"] = item["text"]
-        if not combined[url]["img"]:
-             combined[url]["img"] = item["img"]
-        combined[url]["price_41"] = parse_price(item["text"])
+        if url not in current:
+            current[url] = {"url": url, "text": item["text"], "img": item["img"], "price_40": None, "price_41": None}
+        current[url]["text"] = item["text"]
+        if not current[url]["img"]:
+             current[url]["img"] = item["img"]
+        current[url]["price_41"] = parse_price(item["text"])
 
-    # Sorting Engine
-    def sort_logic(doc):
-        name = doc["text"].lower()
-        is_ball_40 = 'ball' in name and doc["price_40"] is not None
-        is_super_41 = 'super' in name and doc["price_41"] is not None
-        
-        is_priority = is_ball_40 or is_super_41
-        
-        # Determine absolute cheapest price it possesses across the two sizes
-        min_p = min([p for p in (doc["price_40"], doc["price_41"]) if p] or [999999])
-        
-        # Sort so that Priority Items (True) come entirely before Non-Priority Items (False)
-        return (not is_priority, min_p)
-
-    sorted_shoes = sorted(list(combined.values()), key=sort_logic)
-    top_10 = sorted_shoes[:10]
+    # Detect Price Drops & State Syncing
+    price_drops = []
     
-    if top_10:
-        html = build_email_html(top_10)
-        send_email("Cettire Sneaker Deals: Top 10 Priority Picks", html)
+    for u, doc in current.items():
+        if u in known:
+            k_40 = known[u].get("price_40")
+            k_41 = known[u].get("price_41")
+            
+            c_40 = doc["price_40"]
+            c_41 = doc["price_41"]
+            
+            drop_40 = (k_40 - c_40) if (k_40 and c_40 and c_40 < k_40) else 0
+            drop_41 = (k_41 - c_41) if (k_41 and c_41 and c_41 < k_41) else 0
+            
+            if drop_40 > 0 or drop_41 > 0:
+                name = doc["text"].lower()
+                # Only alert drops for strictly targeted items
+                if 'ball' in name or 'super' in name:
+                    drop_item = dict(doc)
+                    drop_item["drop_40"] = drop_40
+                    drop_item["drop_41"] = drop_41
+                    price_drops.append(drop_item)
+
+    # Filter & Sort strictly Ball Stars (Size 40 Required)
+    ballstars = [d for d in current.values() if 'ball' in d["text"].lower() and d["price_40"] is not None]
+    ballstars = sorted(ballstars, key=lambda x: x["price_40"])[:5]
+
+    # Filter & Sort strictly Super-Stars (Size 41 Required)
+    superstars = [d for d in current.values() if 'super' in d["text"].lower() and d["price_41"] is not None]
+    superstars = sorted(superstars, key=lambda x: x["price_41"])[:5]
+
+    if price_drops or ballstars or superstars:
+        html = build_email_html(price_drops, ballstars, superstars)
+        subject_parts = []
+        if price_drops: subject_parts.append(f"{len(price_drops)} Price Drops")
+        subject = f"Cettire Hotlist: {', '.join(subject_parts)}" if subject_parts else "Cettire Hotlist Tracker"
+        
+        send_email(subject, html)
         print("Completed successfully.")
+
+    # Save lightweight state persistence
+    with open(JSON_FILE, "w") as f:
+        json.dump(current, f, indent=4)
 
 if __name__ == "__main__":
     main()
