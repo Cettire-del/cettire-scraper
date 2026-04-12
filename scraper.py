@@ -7,8 +7,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from playwright.sync_api import sync_playwright
 
-# Starting fresh on page 1 works perfectly once cookies are accepted
-URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose%20sneakers&refinementList%5Btags%5D%5B0%5D=Shoes&refinementList%5BSize%5D%5B0%5D=EU40&refinementList%5BSize%5D%5B1%5D=EU41&page=1"
+# The clean, unfiltered URL to get all ~181 Listings
+URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose%20sneakers"
 
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
@@ -171,10 +171,9 @@ def main():
         page.goto(URL, timeout=60000)
         page.wait_for_timeout(5000)
 
-        # ====== FIX: SMASH THE COOKIE WALL ======
         print("Looking for cookie banner...")
         try:
-            # Look for ANY element containing 'Alle akzeptieren' or 'Accept' and force inject a rapid click
+            # Destroy cookie banner to un-freeze the page results
             cookie_btn = page.query_selector('text=/Alle akzeptieren|Accept All/i')
             if cookie_btn:
                 print("Found cookie banner! Instantly destroying it using JS execution.")
@@ -183,12 +182,11 @@ def main():
                 
                 print("Reloading the page to force Cettire to populate the full search results...")
                 page.reload(timeout=60000)
-                page.wait_for_timeout(6000) # Give UI time to paint products
+                page.wait_for_timeout(6000)
             else:
                 print("No cookie banner detected.")
         except Exception as e:
             print(f"Failed to click cookies (may be fine): {e}")
-        # =========================================
 
         print("Scrolling realistically to aggressively load React components...")
         last_product_count = 0
@@ -196,15 +194,14 @@ def main():
         max_loops = 30 
         
         for i in range(max_loops):
-            # Gentle, short scrolls down the page (1000px at a time instead of 3000px)
+            # Gentle, short scrolls down the page
             page.evaluate("window.scrollBy(0, 1000)")
             page.wait_for_timeout(1500)
             
-            # Use raw JS to force-click the load more button so invisible popups don't block it
+            # Auto-click anything matching "Load More"
             try:
                 load_more_elements = page.query_selector_all('text=/Mehr laden|Load More/i')
                 for el in load_more_elements:
-                    # If it exists, nuke it
                     el.evaluate("el => el.click()")
                     print(f"Force-Clicked bottom loader using JS (pass {i+1})")
                     page.wait_for_timeout(2500)
@@ -258,7 +255,7 @@ def main():
     if current:
         price_history.append({"date": now, "avg_price": round(avg_price, 2), "count": len(current)})
 
-    # STILL sending the email every time!
+    # STILL sending the email every time for right now!
     if True:
         print(f"{len(new_items)} NEW, {len(removed_items)} REMOVED")
         html = build_email_html(current, new_items, removed_items, price_history)
