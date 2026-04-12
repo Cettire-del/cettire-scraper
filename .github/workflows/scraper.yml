@@ -2,8 +2,8 @@ name: Cettire Scraper
 
 on:
   schedule:
-      - cron: '0 * * * *' # exactly every hour
-        workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
+      - cron: '0 * * * *'
+        workflow_dispatch:
 
         jobs:
           scrape:
@@ -23,14 +23,14 @@ on:
                                                                                         run: |
                                                                                                   pip install -r requirements.txt
                                                                                                             python -m playwright install --with-deps chromium
-                                                                                                            
+
                                                                                                                   - name: Run Scraper
                                                                                                                           env:
                                                                                                                                     EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
                                                                                                                                               EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
                                                                                                                                                         EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
                                                                                                                                                                 run: python scraper.py
-                                                                                                                                                                
+
                                                                                                                                                                       - name: Commit and Push Updated json
                                                                                                                                                                               run: |
                                                                                                                                                                                         git config --global user.name 'github-actions[bot]'
