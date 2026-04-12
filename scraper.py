@@ -1,6 +1,8 @@
 import json
 import os
+import re
 import smtplib
+from datetime import datetime, timezone
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from playwright.sync_api import sync_playwright
@@ -11,6 +13,19 @@ EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER") or EMAIL_SENDER
 JSON_FILE = "known_listings.json"
+
+
+def parse_price(text):
+    """Extract the lowest (sale) price from listing text like '€422,45€295,71'."""
+    prices = re.findall(r"€([\d.,]+)", text)
+    parsed = []
+    for p in prices:
+        try:
+            cleaned = p.replace(".", "").replace(",", ".")
+            parsed.append(float(cleaned))
+        except ValueError:
+            pass
+    return min(parsed) if parsed else None
 
 
 def send_email(subject, html_body):
@@ -33,16 +48,107 @@ def send_email(subject, html_body):
         print(f"Failed to send email: {e}")
 
 
+def build_email_html(current, new_items, removed_items, price_history):
+    now = datetime.now(timezone.utc).strftime("%d %b %Y, %H:%M UTC")
+    prices = [p for p in (parse_price(d["text"]) for d in current.values()) if p]
+    avg_price = sum(prices) / len(prices) if prices else 0
+    min_price = min(prices) if prices else 0
+    max_price = max(prices) if prices else 0
+
+    # Price trend
+    trend_html = ""
+    if len(price_history) >= 2:
+        prev_avg = price_history[-2]["avg_price"]
+        diff = avg_price - prev_avg
+        pct = (diff / prev_avg) * 100 if prev_avg else 0
+        arrow = "▲" if diff > 0 else "▼" if diff < 0 else "–"
+        color = "#cc3333" if diff > 0 else "#2d8f2d" if diff < 0 else "#666"
+        trend_html = f"<span style='color:{color};font-weight:bold'>{arrow} {abs(pct):.1f}%</span> vs last check"
+
+    html = f"""
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #f8f9fa; padding: 20px; border-radius: 12px;">
+        <div style="background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 24px; border-radius: 10px; margin-bottom: 16px;">
+            <h1 style="margin: 0 0 4px 0; font-size: 20px;">👟 Golden Goose Tracker</h1>
+            <p style="margin: 0; opacity: 0.7; font-size: 12px;">{now}</p>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+            <div style="flex: 1; background: white; padding: 16px; border-radius: 8px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                <div style="font-size: 28px; font-weight: bold; color: #1a1a2e;">{len(current)}</div>
+                <div style="font-size: 12px; color: #666;">Total Listings</div>
+            </div>
+            <div style="flex: 1; background: white; padding: 16px; border-radius: 8px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                <div style="font-size: 28px; font-weight: bold; color: #1a1a2e;">€{avg_price:,.0f}</div>
+                <div style="font-size: 12px; color: #666;">Avg Price {trend_html}</div>
+            </div>
+            <div style="flex: 1; background: white; padding: 16px; border-radius: 8px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                <div style="font-size: 28px; font-weight: bold; color: #2d8f2d;">€{min_price:,.0f}</div>
+                <div style="font-size: 12px; color: #666;">Cheapest</div>
+            </div>
+        </div>
+    """
+
+    if new_items:
+        html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <h2 style="margin: 0 0 12px 0; font-size: 16px; color: #2d8f2d;">🟢 New Listings</h2>"""
+        for i in new_items:
+            price = parse_price(i["text"])
+            price_str = f"€{price:,.2f}" if price else "N/A"
+            name = re.sub(r"€[\d.,]+", "", i["text"]).strip()
+            name = re.sub(r"\s+", " ", name).strip()
+            html += f"""<div style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                <a href="{i['url']}" style="color: #1a1a2e; text-decoration: none; font-weight: 500;">{name}</a>
+                <span style="float: right; color: #2d8f2d; font-weight: bold;">{price_str}</span>
+            </div>"""
+        html += "</div>"
+
+    if removed_items:
+        html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <h2 style="margin: 0 0 12px 0; font-size: 16px; color: #cc3333;">🔴 Removed Listings</h2>"""
+        for i in removed_items:
+            price = parse_price(i["text"])
+            price_str = f"€{price:,.2f}" if price else "N/A"
+            name = re.sub(r"€[\d.,]+", "", i["text"]).strip()
+            name = re.sub(r"\s+", " ", name).strip()
+            html += f"""<div style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                <a href="{i['url']}" style="color: #999; text-decoration: line-through;">{name}</a>
+                <span style="float: right; color: #cc3333;">{price_str}</span>
+            </div>"""
+        html += "</div>"
+
+    # Price history table
+    if len(price_history) > 1:
+        html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <h2 style="margin: 0 0 12px 0; font-size: 16px; color: #1a1a2e;">📈 Price History</h2>
+            <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+            <tr style="color: #666;"><th style="text-align:left;padding:4px;">Date</th><th style="text-align:right;padding:4px;">Avg Price</th><th style="text-align:right;padding:4px;">Listings</th></tr>"""
+        for entry in price_history[-10:]:
+            html += f"""<tr><td style="padding:4px;">{entry['date']}</td>
+                <td style="text-align:right;padding:4px;">€{entry['avg_price']:,.2f}</td>
+                <td style="text-align:right;padding:4px;">{entry['count']}</td></tr>"""
+        html += "</table></div>"
+
+    html += "</div>"
+    return html
+
+
 def main():
-    known = {}
+    data = {"listings": {}, "price_history": []}
     if os.path.exists(JSON_FILE):
         try:
             with open(JSON_FILE, "r") as f:
-                known = json.load(f)
-                if isinstance(known, list):
-                    known = {u: {"url": u, "text": ""} for u in known}
+                loaded = json.load(f)
+                if isinstance(loaded, dict) and "listings" in loaded:
+                    data = loaded
+                elif isinstance(loaded, dict):
+                    data["listings"] = loaded
+                elif isinstance(loaded, list):
+                    data["listings"] = {u: {"url": u, "text": ""} for u in loaded}
         except Exception:
             pass
+
+    known = data["listings"]
+    price_history = data.get("price_history", [])
 
     print("Launching browser...")
     with sync_playwright() as p:
@@ -100,20 +206,15 @@ def main():
     new_items = [d for u, d in current.items() if u not in known]
     removed_items = [d for u, d in known.items() if u not in current]
 
+    # Update price history
+    prices = [p for p in (parse_price(d["text"]) for d in current.values()) if p]
+    avg_price = sum(prices) / len(prices) if prices else 0
+    now = datetime.now(timezone.utc).strftime("%d %b %Y %H:%M")
+    price_history.append({"date": now, "avg_price": round(avg_price, 2), "count": len(current)})
+
     if new_items or removed_items:
-        html = ""
-        if new_items:
-            print(f"{len(new_items)} NEW listings!")
-            html += "<h2 style='color:green'>New Listings</h2><ul>"
-            for i in new_items:
-                html += f"<li><a href='{i['url']}'>{i['text']}</a></li>"
-            html += "</ul>"
-        if removed_items:
-            print(f"{len(removed_items)} REMOVED listings!")
-            html += "<h2 style='color:red'>Removed Listings</h2><ul>"
-            for i in removed_items:
-                html += f"<li><a href='{i['url']}'>{i['text']}</a></li>"
-            html += "</ul>"
+        print(f"{len(new_items)} NEW, {len(removed_items)} REMOVED")
+        html = build_email_html(current, new_items, removed_items, price_history)
         parts = []
         if new_items:
             parts.append(f"{len(new_items)} new")
@@ -123,10 +224,14 @@ def main():
             f"Cettire Alert: {', '.join(parts)} Golden Goose listing(s)",
             html,
         )
-        with open(JSON_FILE, "w") as f:
-            json.dump(current, f, indent=4)
     else:
         print("No changes detected.")
+
+    # Always save state (including updated price history)
+    data["listings"] = current
+    data["price_history"] = price_history
+    with open(JSON_FILE, "w") as f:
+        json.dump(data, f, indent=4)
 
 
 if __name__ == "__main__":
