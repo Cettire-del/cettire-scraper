@@ -10,7 +10,7 @@ URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&
 # Environment variables for email
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD") # Gmail App Password
-EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER", EMAIL_SENDER)
+EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER") or EMAIL_SENDER
 
 JSON_FILE = "known_listings.json"
 
