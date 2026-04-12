@@ -2,7 +2,7 @@ name: Cettire Scraper
 
 on:
   schedule:
-    - cron: '0 * * * *' # exactly every hour
+    - cron: '14,44 * * * *'
   workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
 
 jobs:
