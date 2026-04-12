@@ -7,7 +7,6 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from playwright.sync_api import sync_playwright
 
-# Using your URL that loads everything up to page 2
 URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose%20sneakers&menu%5Bdepartment%5D=men&menu%5Bproduct_type%5D=Sneakers&from=home.search_box_direct_query&query=golden%20goose%20sneakers&refinementList%5Btags%5D%5B0%5D=Shoes&refinementList%5BSize%5D%5B0%5D=EU40&refinementList%5BSize%5D%5B1%5D=EU41&page=2"
 
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
@@ -159,6 +158,19 @@ def main():
         page.goto(URL, timeout=60000)
         page.wait_for_timeout(8000)
 
+        # DEBUGGING X-RAY 
+        print("======== BOT X-RAY ========")
+        page_title = page.evaluate("document.title")
+        print(f"PAGE TITLE SEEN BY BOT: {page_title}")
+        
+        all_links = page.evaluate("Array.from(document.querySelectorAll('a')).map(a => a.href)")
+        print(f"TOTAL LINKS ON PAGE: {len(all_links)}")
+        
+        print("FIRST 30 LINKS FOUND:")
+        for link in all_links[:30]:
+            print(f" - {link}")
+        print("===========================")
+
         print("Scrolling page to load all items...")
         last_height = page.evaluate("document.body.scrollHeight")
         while True:
@@ -214,11 +226,9 @@ def main():
     avg_price = sum(prices) / len(prices) if prices else 0
     now = datetime.now(timezone.utc).strftime("%d %b %Y %H:%M")
     
-    # Only append to history if prices exist so we don't skew data
     if current:
         price_history.append({"date": now, "avg_price": round(avg_price, 2), "count": len(current)})
 
-    # ALWAYS send email for now
     if True:
         print(f"{len(new_items)} NEW, {len(removed_items)} REMOVED")
         html = build_email_html(current, new_items, removed_items, price_history)
