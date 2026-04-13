@@ -11,11 +11,24 @@ BASE_URL = "https://www.cettire.com/de/pages/search?qTitle=golden%20goose&menu%5
 URL_40 = BASE_URL + "refinementList%5BSize%5D%5B0%5D=US7&refinementList%5BSize%5D%5B1%5D=UK6&refinementList%5BSize%5D%5B2%5D=IT40&refinementList%5BSize%5D%5B3%5D=EU40&refinementList%5BSize%5D%5B4%5D=BR38&refinementList%5BSize%5D%5B5%5D=KR250&refinementList%5BSize%5D%5B6%5D=JP25&refinementList%5BSize%5D%5B7%5D=FR41&page=1"
 URL_41 = BASE_URL + "refinementList%5BSize%5D%5B0%5D=US8&refinementList%5BSize%5D%5B1%5D=UK7&refinementList%5BSize%5D%5B2%5D=IT41&refinementList%5BSize%5D%5B3%5D=EU41&refinementList%5BSize%5D%5B4%5D=BR39&refinementList%5BSize%5D%5B5%5D=KR260&refinementList%5BSize%5D%5B6%5D=JP26&refinementList%5BSize%5D%5B7%5D=FR42&page=1"
 
+# === 🎯 EXACT VIP TARGETS ===
+FAVORITE_URLS = [
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-low-top-sneakers-959556024/cmVhY3Rpb24vcHJvZHVjdDpMRkZxa2trcUFnZWJFa3B4OQ%3D%3D",
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-960142659/cmVhY3Rpb24vcHJvZHVjdDp3R0RaYnp6QnNzRXAyQ25OdQ%3D%3D",
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-low-top-sneakers-922506155/cmVhY3Rpb24vcHJvZHVjdDpaRWc0aHM5UkpFZE5XRTdpOQ%3D%3D"
+]
+
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER") or EMAIL_SENDER
 JSON_FILE = "known_listings.json"
 
+
+def get_product_id(url):
+    m = re.search(r'/products/([^/]+)', url)
+    return m.group(1) if m else None
+
+FAV_IDS = [get_product_id(u) for u in FAVORITE_URLS if get_product_id(u)]
 
 def parse_price(text):
     prices = re.findall(r"€([\d.,]+)", text)
@@ -120,7 +133,7 @@ def generate_item_html(item):
     return html
 
 
-def build_email_html(price_drops, new_targets, ballstars, superstars, avg_price, last_avg):
+def build_email_html(price_drops, new_targets, favs, ballstars, superstars, avg_price, last_avg):
     now = datetime.now(timezone.utc).strftime("%d %b %Y, %H:%M UTC")
 
     html = f"""
@@ -155,6 +168,13 @@ def build_email_html(price_drops, new_targets, ballstars, superstars, avg_price,
             html += generate_item_html(item)
         html += "</div>"
         
+    if favs:
+        html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #f1c40f;">
+            <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #f39c12;">⭐ VIP Target Watchlist</h2>"""
+        for item in favs:
+            html += generate_item_html(item)
+        html += "</div>"
+
     if new_targets:
         html += """<div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #8e44ad;">
             <h2 style="margin: 0 0 12px 0; font-size: 18px; color: #8e44ad;">✨ New Priority Models</h2>"""
@@ -243,11 +263,15 @@ def main():
     current_prices = [val for doc in current.values() for key, val in doc.items() if key in ("price_40", "price_41") and val]
     avg_price = sum(current_prices) / len(current_prices) if current_prices else 0
     
-    known_prices = [val for doc in known.values() for key, val in doc.items() if key in ("price_40", "price_41") and val]
+    known_prices = [val for doc in known.values() for key, val in doc.items() if key in ("price_40", "price_41") and val if not isinstance(val, list)]
     last_avg = sum(known_prices) / len(known_prices) if known_prices else 0
 
-    # Detect Price Drops & Missing Inventory
+    # Detect Price Drops & State Syncing
     price_drops = []
+    
+    # 🎯 Historical Tracking Reinstatement 
+    now_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
+    
     for u, doc in current.items():
         if u in known:
             k_40 = known[u].get("price_40")
@@ -267,6 +291,20 @@ def main():
                     drop_item["drop_41"] = drop_41
                     price_drops.append(drop_item)
 
+        # Restore History Accumulation logic to the JSON
+        doc["history_40"] = known.get(u, {}).get("history_40", [])
+        doc["history_41"] = known.get(u, {}).get("history_41", [])
+        
+        last_hist_40 = doc["history_40"][-1]["price"] if doc["history_40"] else None
+        last_hist_41 = doc["history_41"][-1]["price"] if doc["history_41"] else None
+        
+        if doc["price_40"] and doc["price_40"] != last_hist_40:
+            doc["history_40"].append({"date": now_str, "price": doc["price_40"]})
+        
+        if doc["price_41"] and doc["price_41"] != last_hist_41:
+            doc["history_41"].append({"date": now_str, "price": doc["price_41"]})
+
+
     # Detect completely new target inventory
     new_targets = []
     for u, doc in current.items():
@@ -274,6 +312,12 @@ def main():
             name = doc["text"].lower()
             if ('ball' in name and doc["price_40"] is not None) or ('super' in name and doc["price_41"] is not None):
                 new_targets.append(doc)
+                
+    # 🎯 Match exact Favorite URLs
+    favs = []
+    for u, doc in current.items():
+        if get_product_id(u) in FAV_IDS:
+            favs.append(doc)
 
     # Filter & Sort strictly Ball Stars (Size 40 Required)
     ballstars = [d for d in current.values() if 'ball' in d["text"].lower() and d["price_40"] is not None]
@@ -283,15 +327,16 @@ def main():
     superstars = [d for d in current.values() if 'super' in d["text"].lower() and d["price_41"] is not None]
     superstars = sorted(superstars, key=lambda x: x["price_41"])[:5]
 
-    # MASTER TRIGGER: Only execute if something new happened
-    if price_drops or new_targets:
-        html = build_email_html(price_drops, new_targets, ballstars, superstars, avg_price, last_avg)
+    # MASTER TRIGGER: Run if anything changed OR if VIP target is alive
+    if price_drops or new_targets or favs:
+        html = build_email_html(price_drops, new_targets, favs, ballstars, superstars, avg_price, last_avg)
         
         subject_parts = []
-        if price_drops: subject_parts.append(f"{len(price_drops)} Price Drops")
+        if price_drops: subject_parts.append(f"{len(price_drops)} Drops")
+        if favs: subject_parts.append(f"⭐ VIP Found")
         if new_targets: subject_parts.append(f"{len(new_targets)} New")
         
-        subject = f"Cettire Deal Alert: {', '.join(subject_parts)}"
+        subject = f"Cettire Deal Alert: {', '.join(subject_parts)}" if subject_parts else "Cettire Deal Alert"
         send_email(subject, html)
         print("Alert email sent.")
     else:
