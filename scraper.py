@@ -329,7 +329,8 @@ def main():
 
     # MASTER TRIGGER: Run ONLY if something structurally changed
     if price_drops or new_targets:
-    
+        html = build_email_html(price_drops, new_targets, favs, ballstars, superstars, avg_price, last_avg)
+        
         subject_parts = []
         if price_drops: subject_parts.append(f"{len(price_drops)} Drops")
         if favs: subject_parts.append(f"⭐ VIP Found")
