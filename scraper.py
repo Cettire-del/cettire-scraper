@@ -327,10 +327,9 @@ def main():
     superstars = [d for d in current.values() if 'super' in d["text"].lower() and d["price_41"] is not None]
     superstars = sorted(superstars, key=lambda x: x["price_41"])[:5]
 
-    # MASTER TRIGGER: Run if anything changed OR if VIP target is alive
-    if price_drops or new_targets or favs:
-        html = build_email_html(price_drops, new_targets, favs, ballstars, superstars, avg_price, last_avg)
-        
+    # MASTER TRIGGER: Run ONLY if something structurally changed
+    if price_drops or new_targets:
+    
         subject_parts = []
         if price_drops: subject_parts.append(f"{len(price_drops)} Drops")
         if favs: subject_parts.append(f"⭐ VIP Found")
