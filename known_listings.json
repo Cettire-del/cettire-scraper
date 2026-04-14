@@ -2972,20 +2972,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-957717269": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-957717269",
-        "text": "Golden Goose Deluxe Brand Soul Star Schn\u00fcr-Sneaker \u20ac546,21\u20ac310,66",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/6a91b9be6edb61e81827061b3a0681a8.jpg",
-        "price_40": null,
-        "price_41": 310.66,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 310.66
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-v-star-lace-up-sneakers-963039349": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-v-star-lace-up-sneakers-963039349",
         "text": "Neue Saison Golden Goose Deluxe Brand V-Star-Schn\u00fcrsneaker \u20ac577,15\u20ac404,00",
@@ -3039,62 +3025,6 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 604.45
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-954902576": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-954902576",
-        "text": "Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac600,95\u20ac473,25",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/934307e7229ceaaa9bd8010153b96f85.jpg",
-        "price_40": null,
-        "price_41": 473.25,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 473.25
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-classic-sneakers-946675608": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-classic-sneakers-946675608",
-        "text": "Neue Saison Golden Goose Deluxe Brand Klassische Super-Star-Sneaker von \u20ac612,85\u20ac509,43",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/5b77c4445b80a18e81e9ada696190af3.jpg",
-        "price_40": null,
-        "price_41": 509.43,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 509.43
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-950099960": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-950099960",
-        "text": "Golden Goose Deluxe Brand Soul Star Schn\u00fcr-Sneaker \u20ac619,99\u20ac325,49",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/ea008c5a85db1f9c48a49ba5f6a393f8.jpg",
-        "price_40": null,
-        "price_41": 325.49,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 325.49
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201",
-        "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Lae-Up Sneakers \u20ac708,05\u20ac588,57",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a597d5211cff5be47f1a571cf3770d6e.jpg",
-        "price_40": null,
-        "price_41": 588.57,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 588.57
             }
         ]
     },
@@ -3168,6 +3098,20 @@
             }
         ]
     },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-957717269": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-957717269",
+        "text": "Golden Goose Deluxe Brand Soul Star Schn\u00fcr-Sneaker \u20ac546,21\u20ac310,66",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/6a91b9be6edb61e81827061b3a0681a8.jpg",
+        "price_40": null,
+        "price_41": 310.66,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 310.66
+            }
+        ]
+    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-955569551": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-955569551",
         "text": "Golden Goose Deluxe Brand Super-Star-Schn\u00fcrsneaker von \u20ac618,80\u20ac541,45",
@@ -3182,6 +3126,20 @@
             }
         ]
     },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-954902576": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-954902576",
+        "text": "Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac600,95\u20ac473,25",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/934307e7229ceaaa9bd8010153b96f85.jpg",
+        "price_40": null,
+        "price_41": 473.25,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 473.25
+            }
+        ]
+    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lace-up-sneakers-955677026": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lace-up-sneakers-955677026",
         "text": "Golden Goose Deluxe Brand Forty 2 Schn\u00fcrsneaker \u20ac708,05\u20ac557,59",
@@ -3193,6 +3151,48 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 557.59
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-classic-sneakers-946675608": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-classic-sneakers-946675608",
+        "text": "Neue Saison Golden Goose Deluxe Brand Klassische Super-Star-Sneaker von \u20ac612,85\u20ac509,43",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/5b77c4445b80a18e81e9ada696190af3.jpg",
+        "price_40": null,
+        "price_41": 509.43,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 509.43
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-950099960": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-950099960",
+        "text": "Golden Goose Deluxe Brand Soul Star Schn\u00fcr-Sneaker \u20ac619,99\u20ac325,49",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/ea008c5a85db1f9c48a49ba5f6a393f8.jpg",
+        "price_40": null,
+        "price_41": 325.49,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 325.49
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201",
+        "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Lae-Up Sneakers \u20ac708,05\u20ac588,57",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a597d5211cff5be47f1a571cf3770d6e.jpg",
+        "price_40": null,
+        "price_41": 588.57,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 588.57
             }
         ]
     },
