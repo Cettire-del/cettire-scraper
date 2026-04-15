@@ -2383,20 +2383,28 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-dad-lace-up-sneakers-963162967": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-dad-lace-up-sneakers-963162967",
-        "text": "Neue Saison Golden Goose Deluxe Brand Running Dad Schn\u00fcrschuhe \u20ac724,71\u20ac507,30",
+        "text": "Neue Saison Golden Goose Deluxe Brand Running Dad Schn\u00fcrschuhe \u20ac708,05\u20ac495,63",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/3e34609c715eaf5713507ed0f4b90c09.jpg",
-        "price_40": 507.3,
-        "price_41": 507.3,
+        "price_40": 495.63,
+        "price_41": 495.63,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
                 "price": 507.3
+            },
+            {
+                "date": "2026-04-15 19:17",
+                "price": 495.63
             }
         ],
         "history_41": [
             {
                 "date": "2026-04-13 13:28",
                 "price": 507.3
+            },
+            {
+                "date": "2026-04-15 19:17",
+                "price": 495.63
             }
         ]
     },
@@ -2608,10 +2616,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-961350010": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-961350010",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac577,15\u20ac414,11",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac577,15\u20ac404,00",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/62c1c0f61240d4c83b00e83ca473704e.jpg",
         "price_40": 404.0,
-        "price_41": 414.11,
+        "price_41": 404.0,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -2634,6 +2642,10 @@
             {
                 "date": "2026-04-15 10:17",
                 "price": 414.11
+            },
+            {
+                "date": "2026-04-15 19:17",
+                "price": 404.0
             }
         ]
     },
@@ -2693,12 +2705,16 @@
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-stardan-lace-up-sneakers-961350025",
         "text": "Neue Saison Golden Goose Deluxe Brand Stardan Schn\u00fcrschuhe \u20ac665,21\u20ac465,65",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/fd6202fce00f09d3baf843c96f20cc7d.jpg",
-        "price_40": 465.65,
+        "price_40": 563.84,
         "price_41": 465.65,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
                 "price": 465.65
+            },
+            {
+                "date": "2026-04-15 19:17",
+                "price": 563.84
             }
         ],
         "history_41": [
