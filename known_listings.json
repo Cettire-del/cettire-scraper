@@ -435,10 +435,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-933062010": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-933062010",
-        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac593,81\u20ac441,65",
+        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac577,15\u20ac378,75",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a2f9aa76e1366112f747741de7a19bee.jpg",
         "price_40": 409.21,
-        "price_41": 441.65,
+        "price_41": 378.75,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -453,6 +453,10 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 441.65
+            },
+            {
+                "date": "2026-04-17 20:17",
+                "price": 378.75
             }
         ]
     },
@@ -1601,12 +1605,16 @@
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-star-patch-low-top-sneakers-923775300",
         "text": "Neue Saison Golden Goose Deluxe Brand Low-Top-Sneaker mit Sternenaufn\u00e4her \u20ac558,11\u20ac415,09",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/598f4ddd405405bd43686b6827e670cb.jpg",
-        "price_40": 401.87,
+        "price_40": 459.97,
         "price_41": 415.09,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
                 "price": 401.87
+            },
+            {
+                "date": "2026-04-17 20:17",
+                "price": 459.97
             }
         ],
         "history_41": [
@@ -2056,10 +2064,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-sneakers-959657797": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-sneakers-959657797",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ball Star Turnschuhe \u20ac577,15\u20ac404,00",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ball Star Turnschuhe \u20ac577,15\u20ac454,51",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/fb19d4c6416775595de3ca203869f87d.jpg",
         "price_40": 454.51,
-        "price_41": 404.0,
+        "price_41": null,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
