@@ -915,80 +915,65 @@
         function renderDealsPage() {
             const main = document.getElementById('mainContent');
 
-            // Build a flat list of deal entries (one per size per product)
-            const deals = [];
-            allProducts.forEach(p => {
-                if (p.floor40 !== null) {
-                    deals.push({
-                        product: p,
-                        size: 40,
-                        floor: p.floor40,
-                        current: p.p40,
-                        gap: p.p40 ? p.p40 - p.floor40 : null,
-                    });
-                }
-                if (p.floor41 !== null) {
-                    deals.push({
-                        product: p,
-                        size: 41,
-                        floor: p.floor41,
-                        current: p.p41,
-                        gap: p.p41 ? p.p41 - p.floor41 : null,
-                    });
-                }
+            // Sort products by their absolute cheapest floor price
+            const sorted = [...allProducts].filter(p => p.floor40 !== null || p.floor41 !== null);
+            sorted.sort((a, b) => {
+                const fa = Math.min(a.floor40 || Infinity, a.floor41 || Infinity);
+                const fb = Math.min(b.floor40 || Infinity, b.floor41 || Infinity);
+                return fa - fb;
             });
-
-            // Sort by lowest floor price first
-            deals.sort((a, b) => a.floor - b.floor);
 
             main.innerHTML = `
                 <h2 class="section-title">Lowest Ever Recorded</h2>
-                <p class="section-subtitle">Every shoe at its all-time floor price — sorted cheapest first. Your hypothetical shopping list.</p>
+                <p class="section-subtitle">${sorted.length} shoes ranked by their all-time floor price — your hypothetical shopping list.</p>
 
-                <table class="deals-table">
-                    <tbody id="dealsBody"></tbody>
-                </table>
+                <div class="product-grid" id="dealsGrid"></div>
             `;
 
-            const tbody = document.getElementById('dealsBody');
-            tbody.innerHTML = deals.map(d => {
-                const p = d.product;
-                const floorStr = formatPrice(d.floor);
-                const currentStr = d.current ? formatPrice(d.current) : 'Out of stock';
-                let gapHtml = '';
-                if (d.gap !== null) {
-                    if (d.gap <= 0) {
-                        gapHtml = `<span class="deals-gap at-floor">🔥 At floor!</span>`;
-                    } else {
-                        gapHtml = `<span class="deals-gap above">+€${Math.round(d.gap).toLocaleString('de-DE')} above</span>`;
-                    }
-                } else {
-                    gapHtml = `<span class="deals-gap above" style="background:#f5f5f7;color:#86868b">—</span>`;
+            const grid = document.getElementById('dealsGrid');
+            grid.innerHTML = sorted.map(p => {
+                const ff40 = formatPrice(p.floor40);
+                const ff41 = formatPrice(p.floor41);
+
+                // Gap badges
+                function gapBadge(floor, current) {
+                    if (!floor) return '';
+                    if (!current) return '<div style="font-size:0.7rem;color:#86868b;margin-top:2px">Out of stock</div>';
+                    const diff = current - floor;
+                    if (diff <= 0) return '<div style="font-size:0.7rem;color:#1a8d48;font-weight:600;margin-top:2px">🔥 At floor!</div>';
+                    return `<div style="font-size:0.7rem;color:#c27a13;font-weight:600;margin-top:2px">Now ${formatPrice(current)} (+€${Math.round(diff)})</div>`;
                 }
 
+                const gap40 = gapBadge(p.floor40, p.p40);
+                const gap41 = gapBadge(p.floor41, p.p41);
+
                 return `
-                <tr class="deals-row" data-slug="${p.slug}">
-                    <td>${p.img ? `<img class="deals-thumb" src="${p.img}" alt="" loading="lazy">` : ''}</td>
-                    <td>
-                        <div class="deals-name">${p.name}${p.isFav ? '<span class="deals-vip">⭐ VIP</span>' : ''}</div>
-                        <div class="deals-size-label">Size ${d.size}</div>
-                    </td>
-                    <td>
-                        <div class="deals-size-label">Lowest Ever</div>
-                        <div class="deals-price">${floorStr}</div>
-                    </td>
-                    <td>
-                        <div class="deals-size-label">Current</div>
-                        <div class="deals-current">${currentStr}</div>
-                    </td>
-                    <td>${gapHtml}</td>
-                </tr>`;
+                <div class="product-card" data-slug="${p.slug}">
+                    <div class="card-img-wrapper">
+                        ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : ''}
+                        ${p.isFav ? '<div class="vip-badge">⭐ VIP</div>' : ''}
+                    </div>
+                    <div class="card-body">
+                        <div class="card-name">${p.name}</div>
+                        <div class="card-prices">
+                            <div class="card-price-tag">
+                                <div class="sz-label">Floor 40</div>
+                                <div class="sz-price ${!ff40 ? 'na' : ''}">${ff40 || '—'}</div>
+                                ${gap40}
+                            </div>
+                            <div class="card-price-tag">
+                                <div class="sz-label">Floor 41</div>
+                                <div class="sz-price ${!ff41 ? 'na' : ''}">${ff41 || '—'}</div>
+                                ${gap41}
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
             }).join('');
 
-            // Click to open modal
-            tbody.querySelectorAll('.deals-row').forEach(row => {
-                row.addEventListener('click', () => {
-                    const product = allProducts.find(p => p.slug === row.dataset.slug);
+            grid.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const product = allProducts.find(p => p.slug === card.dataset.slug);
                     if (product) openModal(product);
                 });
             });
