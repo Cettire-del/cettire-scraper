@@ -676,10 +676,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-star-patch-low-top-sneakers-928698895": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-star-patch-low-top-sneakers-928698895",
-        "text": "Neue Saison Golden Goose Deluxe Brand Low-Top-Sneaker mit Sternenaufn\u00e4her \u20ac553,35\u20ac397,03",
+        "text": "Golden Goose Deluxe Brand Low-Top-Sneaker mit Sternenaufn\u00e4her \u20ac558,11\u20ac415,09",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/e9fca815958a16546ccfb727ba80c4be.jpg",
         "price_40": 415.09,
-        "price_41": 397.03,
+        "price_41": 415.09,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -694,6 +694,10 @@
             {
                 "date": "2026-04-16 16:17",
                 "price": 397.03
+            },
+            {
+                "date": "2026-04-18 15:17",
+                "price": 415.09
             }
         ]
     },
@@ -3503,20 +3507,6 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 615.59
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-957717269": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-957717269",
-        "text": "Golden Goose Deluxe Brand Soul Star Schn\u00fcr-Sneaker \u20ac546,21\u20ac310,66",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/6a91b9be6edb61e81827061b3a0681a8.jpg",
-        "price_40": null,
-        "price_41": 310.66,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 310.66
             }
         ]
     },
