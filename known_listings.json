@@ -1605,7 +1605,7 @@
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-star-patch-low-top-sneakers-923775300",
         "text": "Neue Saison Golden Goose Deluxe Brand Low-Top-Sneaker mit Sternenaufn\u00e4her \u20ac558,11\u20ac415,09",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/598f4ddd405405bd43686b6827e670cb.jpg",
-        "price_40": 459.97,
+        "price_40": 401.87,
         "price_41": 415.09,
         "history_40": [
             {
@@ -1615,6 +1615,10 @@
             {
                 "date": "2026-04-17 20:17",
                 "price": 459.97
+            },
+            {
+                "date": "2026-04-18 08:17",
+                "price": 401.87
             }
         ],
         "history_41": [
