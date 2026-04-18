@@ -1937,7 +1937,7 @@
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-sneakers-916528602",
         "text": "Neue Saison Golden Goose Deluxe Brand Super-Star Low-Top-Sneaker von \u20ac577,15\u20ac378,75",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/7116241ac609e90ac92f930818e9e14d.jpg",
-        "price_40": 398.95,
+        "price_40": 404.0,
         "price_41": 378.75,
         "history_40": [
             {
@@ -1947,6 +1947,10 @@
             {
                 "date": "2026-04-16 06:17",
                 "price": 398.95
+            },
+            {
+                "date": "2026-04-18 19:17",
+                "price": 404.0
             }
         ],
         "history_41": [
@@ -3578,20 +3582,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201",
-        "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Lae-Up Sneakers \u20ac708,05\u20ac588,57",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a597d5211cff5be47f1a571cf3770d6e.jpg",
-        "price_40": null,
-        "price_41": 588.57,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 588.57
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-sequin-embellished-slip-on-sneakers-961156755": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-sequin-embellished-slip-on-sneakers-961156755",
         "text": "Neue Saison Golden Goose Deluxe Brand Golden Goose Deluxe Marken-Sneaker mit Paillettenbesatz zum Hineinschl\u00fcpfen \u20ac648,55\u20ac453,98",
@@ -3649,6 +3639,20 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 415.46
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201",
+        "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Lae-Up Sneakers \u20ac708,05\u20ac588,57",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a597d5211cff5be47f1a571cf3770d6e.jpg",
+        "price_40": null,
+        "price_41": 588.57,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 588.57
             }
         ]
     }
