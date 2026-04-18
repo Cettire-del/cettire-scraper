@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cettire Premium Dashboard</title>
+    <!-- Chart.js for absolute best Vanilla JS charting -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: rgba(30, 41, 59, 0.7);
+            --primary-accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 4rem 2rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem 1.5rem;
+            border-radius: 99px;
+            font-size: 1.1rem;
+            color: white;
+            outline: none;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .search-bar:focus {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2), 0 4px 24px rgba(0,0,0,0.3);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        /* Loading indicator inside search wrapper */
+        .loader {
+            position: absolute;
+            right: calc(50% - 280px);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--primary-accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin { 100% { transform: translateY(-50%) rotate(360deg); } }
+
+        /* Error Banner */
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            color: #fca5a5;
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+            margin: 0 auto;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Dashboard Results Grid */
+        .dashboard {
+            display: none; /* hidden until searched */
+            flex-direction: column;
+            gap: 2rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .hero-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .hero-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: white; /* so transparent shoe pngs look good */
+            padding: 4px;
+            border: 2px solid var(--border-color);
+        }
+
+        .product-meta {
+            flex: 1;
+        }
+        
+        .product-meta h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .product-meta .current-prices {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .price-badge {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-sz {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .price-val {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #10b981; /* Default green */
+        }
+        .price-val.unavailable { color: #ef4444; }
+
+        /* Chart card */
+        .chart-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            height: 400px; /* fixed height for beautiful charts */
+        }
+
+        @media (max-width: 768px) {
+            .hero-card { flex-direction: column; text-align: center; }
+            .product-meta .current-prices { justify-content: center; }
+            .loader { right: 2rem; }
+            .chart-card { height: 300px; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Cettire Market Intelligence</h1>
+            <p>Paste a Cettire link below to view its historical pricing trajectory.</p>
+        </div>
+
+        <div class="search-wrapper">
+            <input type="text" class="search-bar" id="urlInput" placeholder="https://www.cettire.com/products/golden-goose..." autocomplete="off">
+            <div class="loader" id="loader"></div>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="dashboard" id="dashboard">
+            <div class="hero-card">
+                <img id="dashImg" src="" alt="Product">
+                <div class="product-meta">
+                    <h2 id="dashName">Product Name</h2>
+                    <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+                        Tracking data initialized. Dynamic scaling engaged.
+                    </div>
+                    <div class="current-prices">
+                        <div class="price-badge">
+                            <span class="price-sz">Size 40</span>
+                            <span class="price-val" id="dashP40">€0</span>
+                        </div>
+                        <div class="price-badge">
+                            <span class="price-sz">Size 41</span>
+                            <span class="price-val" id="dashP41">€0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let priceChartInstance = null;
+        let dbCache = null; // We cache the JSON fetch to make repeating searches instant
+
+        const urlInput = document.getElementById('urlInput');
+        const loader = document.getElementById('loader');
+        const errorMsg = document.getElementById('errorMessage');
+        const dash = document.getElementById('dashboard');
+
+        // Extract the exact slug using the same Regex matching we built into python
+        function getProductId(url) {
+            const m = url.match(/\/products\/([^/?]+)/);
+            return m ? m[1] : null;
+        }
+
+        function showError(msg) {
+            errorMsg.textContent = msg;
+            errorMsg.style.display = 'block';
+            dash.style.display = 'none';
+        }
+
+        function hideError() {
+            errorMsg.style.display = 'none';
+        }
+
+        function formatEuros(num) {
+            if (!num) return 'N/A';
+            return '€' + num.toLocaleString('en-US', {maximumFractionDigits: 0});
+        }
+
+        async function fetchDatabase() {
+            if (dbCache) return dbCache;
+            try {
+                // When deployed to GitHub Pages, it grabs the adjacent json file.
+                // Works perfectly.
+                const response = await fetch('./known_listings.json');
+                if (!response.ok) throw new Error("JSON not deployed yet.");
+                dbCache = await response.json();
+                return dbCache;
+            } catch (err) {
+                console.error("Database Error:", err);
+                return null;
+            }
+        }
+
+        async function processSearch(val) {
+            if (!val.trim()) return;
+
+            hideError();
+            loader.style.display = 'block';
+
+            const slug = getProductId(val);
+            if (!slug) {
+                loader.style.display = 'none';
+                showError("Invalid Cettire Link. Make sure it contains '/products/...'.");
+                return;
+            }
+
+            const db = await fetchDatabase();
+            if (!db) {
+                loader.style.display = 'none';
+                showError("Could not reach 'known_listings.json'. Make sure GitHub Pages is finished building!");
+                return;
+            }
+
+            // Hunt through the python dictionary structure looking for our slug
+            let targetItem = null;
+            for (const [rawUrl, doc] of Object.entries(db)) {
+                if (getProductId(rawUrl) === slug) {
+                    targetItem = doc;
+                    break;
+                }
+            }
+
+            loader.style.display = 'none';
+
+            if (!targetItem) {
+                showError("Product not found in market tracking database. If it's a new release, waiting 1 hour for the bot to run may fix this.");
+                return;
+            }
+
+            // Render Dashboard
+            renderDashboard(targetItem);
+        }
+
+        function renderDashboard(item) {
+            // Unpack Data
+            const name = item.text.replace(/€[\d.,]+/g, '').trim();
+            document.getElementById('dashName').textContent = name;
+            document.getElementById('dashImg').src = item.img;
+
+            const p40 = item.price_40;
+            const p41 = item.price_41;
+
+            const elP40 = document.getElementById('dashP40');
+            const elP41 = document.getElementById('dashP41');
+
+            elP40.textContent = formatEuros(p40);
+            elP41.textContent = formatEuros(p41);
+
+            elP40.className = 'price-val ' + (p40 ? '' : 'unavailable');
+            elP41.className = 'price-val ' + (p41 ? '' : 'unavailable');
+
+            dash.style.display = 'flex';
+
+            renderChart(item.history_40 || [], item.history_41 || []);
+        }
+
+        function renderChart(hist40, hist41) {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+            
+            // Rebuild chart if exists
+            if (priceChartInstance) {
+                priceChartInstance.destroy();
+            }
+
+            // Data Transformation: Align dates
+            // We'll collect all unique dates on the X-axis
+            const datesSet = new Set();
+            hist40.forEach(d => datesSet.add(d.date));
+            hist41.forEach(d => datesSet.add(d.date));
+            
+            // Sort dates chronologically
+            const sortedDates = Array.from(datesSet).sort();
+
+            // Map data to ordered dates. If missing for a date, use 'null' so chart skips cleanly
+            const data40 = sortedDates.map(date => {
+                const match = hist40.find(h => h.date === date);
+                return match ? match.price : null;
+            });
+
+            const data41 = sortedDates.map(date => {
+                const match = hist41.find(h => h.date === date);
+                return match ? match.price : null;
+            });
+
+            // Auto-Scale Setup handled by Chart.js intrinsically
+            priceChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: sortedDates,
+                    datasets: [
+                        {
+                            label: 'Size 40 Price',
+                            data: data40,
+                            borderColor: '#3b82f6', // Blueprint
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#fff',
+                            pointBorderColor: '#3b82f6',
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            tension: 0.3, // Soft curve
+                            spanGaps: true // Important: bridges over null values dynamically
+                        },
+                        {
+                            label: 'Size 41 Price',
+                            data: data41,
+                            borderColor: '#8b5cf6', // Violet
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#fff',
+                            pointBorderColor: '#8b5cf6',
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            tension: 0.3,
+                            spanGaps: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#f8fafc', font: { family: "'Inter', sans-serif" } }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleFont: { family: "'Inter', sans-serif", size: 13 },
+                            bodyFont: { family: "'Inter', sans-serif", size: 14, weight: 'bold' },
+                            padding: 12,
+                            cornerRadius: 8,
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) { label += '€' + context.parsed.y; }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
+                            ticks: { color: '#94a3b8', font: { family: "'Inter', sans-serif" }, maxTicksLimit: 7 }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
+                            ticks: { 
+                                color: '#94a3b8', 
+                                font: { family: "'Inter', sans-serif" },
+                                callback: function(value) { return '€' + value; }
+                            },
+                            // Chart.js natively does dynamic Y bounds
+                            beginAtZero: false 
+                        }
+                    }
+                }
+            });
+        }
+
+        // Listener
+        let debounceTimer;
+        urlInput.addEventListener('input', (e) => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                processSearch(e.target.value);
+            }, 600);
+        });
+
+    </script>
+</body>
+</html>
