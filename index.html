@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cettire Tracker — Golden Goose Market Intelligence</title>
-    <meta name="description" content="Track Golden Goose sneaker prices across sizes 40 and 41 with historical price charts.">
+    <meta name="description" content="Track Golden Goose sneaker prices across sizes 40 and 41 with historical price charts and market index.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #f5f5f7;
+            background: #eeeef1;
             color: #1d1d1f;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
@@ -22,24 +22,24 @@
 
         /* ─── HEADER ─── */
         .site-header {
-            background: white;
-            border-bottom: 1px solid #e5e5e7;
-            padding: 1.25rem 2rem;
+            border-bottom: 1px solid #e0e0e3;
+            padding: 0 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            background: rgba(255,255,255,0.72);
+            background: rgba(255,255,255,0.82);
         }
 
-        .header-inner {
+        .header-top {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 1.5rem;
+            padding: 1rem 0 0;
         }
 
         .logo {
@@ -48,22 +48,23 @@
             letter-spacing: -0.03em;
             color: #1d1d1f;
             white-space: nowrap;
+            cursor: default;
         }
 
         .logo span { color: #0071e3; }
 
         .search-container {
             flex: 1;
-            max-width: 480px;
+            max-width: 420px;
             position: relative;
         }
 
         .search-bar {
             width: 100%;
-            padding: 0.7rem 1rem 0.7rem 2.5rem;
+            padding: 0.6rem 1rem 0.6rem 2.3rem;
             border: 1px solid #d2d2d7;
             border-radius: 10px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-family: inherit;
             background: #f5f5f7;
             color: #1d1d1f;
@@ -79,23 +80,53 @@
 
         .search-icon {
             position: absolute;
-            left: 0.85rem;
+            left: 0.75rem;
             top: 50%;
             transform: translateY(-50%);
             color: #86868b;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             pointer-events: none;
         }
 
         .header-stats {
             display: flex;
             gap: 1.5rem;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: #86868b;
             white-space: nowrap;
         }
 
         .header-stats strong { color: #1d1d1f; font-weight: 600; }
+
+        /* ─── NAV TABS ─── */
+        .nav-tabs {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            padding-top: 0.75rem;
+        }
+
+        .nav-tab {
+            padding: 0.6rem 1.25rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: inherit;
+            color: #86868b;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-tab:hover { color: #1d1d1f; }
+
+        .nav-tab.active {
+            color: #1d1d1f;
+            font-weight: 600;
+            border-bottom-color: #0071e3;
+        }
 
         /* ─── MAIN CONTENT ─── */
         .main {
@@ -104,27 +135,38 @@
             padding: 2rem;
         }
 
+        /* ─── PAGES (show/hide) ─── */
+        .page { display: none; }
+        .page.active { display: block; }
+
         /* ─── SECTION TITLES ─── */
         .section-title {
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.35rem;
             color: #1d1d1f;
         }
 
         .section-subtitle {
             font-size: 0.9rem;
             color: #86868b;
-            margin-top: -0.75rem;
             margin-bottom: 1.5rem;
         }
 
-        /* ─── FILTER TABS ─── */
+        /* ─── TOOLBAR: FILTERS + SORT ─── */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
         .filter-bar {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
@@ -149,6 +191,31 @@
             border-color: #1d1d1f;
         }
 
+        .sort-select {
+            padding: 0.5rem 0.85rem;
+            border-radius: 10px;
+            border: 1px solid #d2d2d7;
+            background: white;
+            font-size: 0.85rem;
+            font-family: inherit;
+            font-weight: 500;
+            color: #1d1d1f;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2386868b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.7rem center;
+            padding-right: 2rem;
+            transition: all 0.2s ease;
+        }
+
+        .sort-select:focus {
+            border-color: #0071e3;
+            box-shadow: 0 0 0 3px rgba(0,113,227,0.1);
+        }
+
         /* ─── PRODUCT GRID ─── */
         .product-grid {
             display: grid;
@@ -162,25 +229,25 @@
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 1px solid transparent;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
         }
 
         .product-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-            border-color: #d2d2d7;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
         }
 
         .card-img-wrapper {
             width: 100%;
             aspect-ratio: 1;
-            background: #fafafa;
+            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid #f0f0f2;
         }
 
         .card-img-wrapper img {
@@ -201,18 +268,6 @@
             border-radius: 99px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-        }
-
-        .drop-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #34c759;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 99px;
         }
 
         .card-body {
@@ -257,11 +312,95 @@
             font-weight: 700;
             color: #1d1d1f;
             margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
         }
 
         .card-price-tag .sz-price.na {
             color: #d2d2d7;
             font-size: 0.85rem;
+        }
+
+        .trend-arrow {
+            font-size: 0.65rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .trend-arrow.up { color: #34c759; }
+        .trend-arrow.down { color: #ff3b30; }
+
+        /* ─── INDEX PAGE ─── */
+        .index-hero {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.75rem;
+            color: #86868b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #1d1d1f;
+        }
+
+        .stat-card .stat-change {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.35rem;
+        }
+
+        .stat-card .stat-change.positive { color: #34c759; }
+        .stat-card .stat-change.negative { color: #ff3b30; }
+        .stat-card .stat-change.neutral { color: #86868b; }
+
+        .index-chart-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            margin-bottom: 2rem;
+        }
+
+        .index-chart-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1d1d1f;
+        }
+
+        .chart-wrap {
+            height: 340px;
+            position: relative;
+        }
+
+        .chart-wrap-sm {
+            height: 240px;
+            position: relative;
+        }
+
+        .index-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
         }
 
         /* ─── MODAL OVERLAY ─── */
@@ -276,10 +415,12 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            animation: fadeIn 0.2s ease;
         }
 
-        .modal-overlay.open { display: flex; }
+        .modal-overlay.open {
+            display: flex;
+            animation: fadeIn 0.2s ease;
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -363,6 +504,10 @@
             font-weight: 800;
             color: #1d1d1f;
             margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
 
         .modal-price-box .mp-value.na { color: #d2d2d7; }
@@ -412,7 +557,7 @@
             font-size: 0.9rem;
         }
 
-        /* ─── SEARCH RESULTS SECTION ─── */
+        /* ─── SEARCH RESULTS ─── */
         .search-results {
             display: none;
             margin-bottom: 2rem;
@@ -450,14 +595,17 @@
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
-            .header-inner { flex-wrap: wrap; }
+            .header-top { flex-wrap: wrap; }
             .header-stats { display: none; }
             .search-container { max-width: 100%; order: 3; width: 100%; }
+            .toolbar { flex-direction: column; align-items: flex-start; }
             .modal-header { flex-direction: column; align-items: center; text-align: center; }
             .modal-info .modal-prices { justify-content: center; }
             .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; }
             .card-body { padding: 0.75rem; }
             .card-name { font-size: 0.78rem; }
+            .index-hero { grid-template-columns: 1fr; }
+            .index-split { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -465,7 +613,7 @@
 
     <!-- ─── STICKY HEADER ─── -->
     <header class="site-header">
-        <div class="header-inner">
+        <div class="header-top">
             <div class="logo">Cettire<span>Tracker</span></div>
             <div class="search-container">
                 <span class="search-icon">🔍</span>
@@ -476,6 +624,10 @@
                 <div>Avg: <strong id="statAvg">—</strong></div>
             </div>
         </div>
+        <nav class="nav-tabs" id="navTabs">
+            <button class="nav-tab active" data-page="models">Models</button>
+            <button class="nav-tab" data-page="index">Market Index</button>
+        </nav>
     </header>
 
     <!-- ─── MAIN ─── -->
@@ -520,7 +672,10 @@
         let db = null;
         let allProducts = [];
         let chartInstance = null;
+        let indexCharts = [];
         let activeFilter = 'all';
+        let activeSort = 'price-low';
+        let activePage = 'models';
 
         // ─── HELPERS ───
         function getProductId(url) {
@@ -543,6 +698,29 @@
             'golden-goose-deluxe-brand-superstar-low-top-sneakers-922506155'
         ];
 
+        function getTrend(history) {
+            if (!history || history.length < 2) return null;
+            const prev = history[history.length - 2].price;
+            const curr = history[history.length - 1].price;
+            if (curr > prev) return 'up';
+            if (curr < prev) return 'down';
+            return null;
+        }
+
+        function getFirstSeenDate(product) {
+            const dates = [];
+            if (product.hist40.length) dates.push(product.hist40[0].date);
+            if (product.hist41.length) dates.push(product.hist41[0].date);
+            if (!dates.length) return '9999';
+            return dates.sort()[0];
+        }
+
+        function trendHtml(trend) {
+            if (trend === 'up') return '<span class="trend-arrow up">▲</span>';
+            if (trend === 'down') return '<span class="trend-arrow down">▼</span>';
+            return '';
+        }
+
         // ─── LOAD DATA ───
         async function loadData() {
             try {
@@ -550,7 +728,7 @@
                 if (!resp.ok) throw new Error('Could not load data');
                 db = await resp.json();
                 parseProducts();
-                renderApp();
+                renderPage();
             } catch (err) {
                 document.getElementById('mainContent').innerHTML = `
                     <div class="empty-state">
@@ -568,26 +746,62 @@
                 const isBall = name.toLowerCase().includes('ball');
                 const isSuper = name.toLowerCase().includes('super');
                 const isFav = FAV_IDS.includes(slug);
+                const hist40 = doc.history_40 || [];
+                const hist41 = doc.history_41 || [];
                 allProducts.push({
                     url, slug, name, isFav, isBall, isSuper,
                     img: doc.img || '',
                     p40: doc.price_40,
                     p41: doc.price_41,
-                    hist40: doc.history_40 || [],
-                    hist41: doc.history_41 || [],
+                    hist40, hist41,
+                    trend40: getTrend(hist40),
+                    trend41: getTrend(hist41),
                 });
             }
-            // Sort: VIP first, then by cheapest available price
+            sortProducts();
+        }
+
+        function sortProducts() {
             allProducts.sort((a, b) => {
                 if (a.isFav !== b.isFav) return a.isFav ? -1 : 1;
-                const pa = Math.min(a.p40 || Infinity, a.p41 || Infinity);
-                const pb = Math.min(b.p40 || Infinity, b.p41 || Infinity);
-                return pa - pb;
+                switch (activeSort) {
+                    case 'price-low': {
+                        const pa = Math.min(a.p40 || Infinity, a.p41 || Infinity);
+                        const pb = Math.min(b.p40 || Infinity, b.p41 || Infinity);
+                        return pa - pb;
+                    }
+                    case 'price-high': {
+                        const pa = Math.max(a.p40 || 0, a.p41 || 0);
+                        const pb = Math.max(b.p40 || 0, b.p41 || 0);
+                        return pb - pa;
+                    }
+                    case 'date-new': return getFirstSeenDate(b).localeCompare(getFirstSeenDate(a));
+                    case 'date-old': return getFirstSeenDate(a).localeCompare(getFirstSeenDate(b));
+                    default: return 0;
+                }
             });
         }
 
-        // ─── RENDER ───
-        function renderApp() {
+        // ─── NAV TABS ───
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                activePage = tab.dataset.page;
+                renderPage();
+            });
+        });
+
+        function renderPage() {
+            destroyIndexCharts();
+            if (activePage === 'models') renderModelsPage();
+            else if (activePage === 'index') renderIndexPage();
+        }
+
+        // ═══════════════════════════════════════════
+        //  MODELS PAGE
+        // ═══════════════════════════════════════════
+        function renderModelsPage() {
             const main = document.getElementById('mainContent');
             const totalProducts = allProducts.length;
             const prices = allProducts.flatMap(p => [p.p40, p.p41].filter(Boolean));
@@ -602,18 +816,28 @@
                 <h2 class="section-title">Browse All Models</h2>
                 <p class="section-subtitle">${totalProducts} Golden Goose sneakers tracked across sizes 40 & 41</p>
 
-                <div class="filter-bar" id="filterBar">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="super">Super-Stars</button>
-                    <button class="filter-btn" data-filter="ball">Ball Stars</button>
-                    <button class="filter-btn" data-filter="vip">⭐ VIP Targets</button>
+                <div class="toolbar">
+                    <div class="filter-bar" id="filterBar">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="super">Super-Stars</button>
+                        <button class="filter-btn" data-filter="ball">Ball Stars</button>
+                        <button class="filter-btn" data-filter="vip">⭐ VIP</button>
+                    </div>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="price-low">Price: Low → High</option>
+                        <option value="price-high">Price: High → Low</option>
+                        <option value="date-new">Newest First</option>
+                        <option value="date-old">Oldest First</option>
+                    </select>
                 </div>
 
                 <div class="product-grid" id="productGrid"></div>
             `;
 
-            // Attach filter listeners
+            // Set active filter button
             document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === activeFilter) btn.classList.add('active');
+                else btn.classList.remove('active');
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
@@ -622,7 +846,14 @@
                 });
             });
 
-            renderGrid(allProducts);
+            document.getElementById('sortSelect').value = activeSort;
+            document.getElementById('sortSelect').addEventListener('change', (e) => {
+                activeSort = e.target.value;
+                sortProducts();
+                renderGrid(getFilteredProducts());
+            });
+
+            renderGrid(getFilteredProducts());
         }
 
         function getFilteredProducts() {
@@ -630,8 +861,36 @@
                 case 'super': return allProducts.filter(p => p.isSuper);
                 case 'ball': return allProducts.filter(p => p.isBall);
                 case 'vip': return allProducts.filter(p => p.isFav);
-                default: return allProducts;
+                default: return [...allProducts];
             }
+        }
+
+        function buildCardHtml(p) {
+            const fp40 = formatPrice(p.p40);
+            const fp41 = formatPrice(p.p41);
+            const t40 = trendHtml(p.trend40);
+            const t41 = trendHtml(p.trend41);
+
+            return `
+            <div class="product-card" data-slug="${p.slug}">
+                <div class="card-img-wrapper">
+                    ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : ''}
+                    ${p.isFav ? '<div class="vip-badge">⭐ VIP</div>' : ''}
+                </div>
+                <div class="card-body">
+                    <div class="card-name">${p.name}</div>
+                    <div class="card-prices">
+                        <div class="card-price-tag">
+                            <div class="sz-label">Size 40</div>
+                            <div class="sz-price ${!fp40 ? 'na' : ''}">${fp40 || '—'} ${fp40 ? t40 : ''}</div>
+                        </div>
+                        <div class="card-price-tag">
+                            <div class="sz-label">Size 41</div>
+                            <div class="sz-price ${!fp41 ? 'na' : ''}">${fp41 || '—'} ${fp41 ? t41 : ''}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
         }
 
         function renderGrid(products) {
@@ -640,39 +899,186 @@
                 grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="emoji">👟</div><p>No products match this filter.</p></div>`;
                 return;
             }
-            grid.innerHTML = products.map(p => {
-                const fp40 = formatPrice(p.p40);
-                const fp41 = formatPrice(p.p41);
-
-                return `
-                <div class="product-card" data-slug="${p.slug}">
-                    <div class="card-img-wrapper">
-                        ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : ''}
-                        ${p.isFav ? '<div class="vip-badge">⭐ VIP</div>' : ''}
-                    </div>
-                    <div class="card-body">
-                        <div class="card-name">${p.name}</div>
-                        <div class="card-prices">
-                            <div class="card-price-tag">
-                                <div class="sz-label">Size 40</div>
-                                <div class="sz-price ${!fp40 ? 'na' : ''}">${fp40 || '—'}</div>
-                            </div>
-                            <div class="card-price-tag">
-                                <div class="sz-label">Size 41</div>
-                                <div class="sz-price ${!fp41 ? 'na' : ''}">${fp41 || '—'}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-            }).join('');
-
-            // Attach click listeners to every card
+            grid.innerHTML = products.map(p => buildCardHtml(p)).join('');
             grid.querySelectorAll('.product-card').forEach(card => {
                 card.addEventListener('click', () => {
-                    const slug = card.dataset.slug;
-                    const product = allProducts.find(p => p.slug === slug);
+                    const product = allProducts.find(p => p.slug === card.dataset.slug);
                     if (product) openModal(product);
                 });
+            });
+        }
+
+        // ═══════════════════════════════════════════
+        //  INDEX PAGE
+        // ═══════════════════════════════════════════
+        function destroyIndexCharts() {
+            indexCharts.forEach(c => c.destroy());
+            indexCharts = [];
+        }
+
+        function buildHistoryData(filterFn) {
+            const dateMap = {};
+            const products = filterFn ? allProducts.filter(filterFn) : allProducts;
+            products.forEach(p => {
+                p.hist40.forEach(h => {
+                    if (!dateMap[h.date]) dateMap[h.date] = [];
+                    dateMap[h.date].push(h.price);
+                });
+                p.hist41.forEach(h => {
+                    if (!dateMap[h.date]) dateMap[h.date] = [];
+                    dateMap[h.date].push(h.price);
+                });
+            });
+            const sortedDates = Object.keys(dateMap).sort();
+            const averages = sortedDates.map(d => {
+                const prices = dateMap[d];
+                return Math.round(prices.reduce((a, b) => a + b, 0) / prices.length);
+            });
+            const displayDates = sortedDates.map(d => {
+                const parts = d.split(' ')[0].split('-');
+                return parts[2] + '/' + parts[1];
+            });
+            return { displayDates, averages };
+        }
+
+        function renderIndexPage() {
+            const main = document.getElementById('mainContent');
+            const prices = allProducts.flatMap(p => [p.p40, p.p41].filter(Boolean));
+            const currentAvg = prices.length ? Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) : 0;
+            const lowest = prices.length ? Math.round(Math.min(...prices)) : 0;
+            const highest = prices.length ? Math.round(Math.max(...prices)) : 0;
+
+            const allData = buildHistoryData();
+            let changePct = 0;
+            let changeDir = 'neutral';
+            if (allData.averages.length >= 2) {
+                const first = allData.averages[0];
+                const last = allData.averages[allData.averages.length - 1];
+                changePct = ((last - first) / first * 100).toFixed(1);
+                changeDir = last > first ? 'positive' : last < first ? 'negative' : 'neutral';
+            }
+
+            const changeSymbol = changeDir === 'positive' ? '▲ +' : changeDir === 'negative' ? '▼ ' : '';
+
+            main.innerHTML = `
+                <h2 class="section-title">Market Index</h2>
+                <p class="section-subtitle">Composite pricing trends across all tracked Golden Goose inventory</p>
+
+                <div class="index-hero">
+                    <div class="stat-card">
+                        <div class="stat-label">Current Average</div>
+                        <div class="stat-value">${formatPrice(currentAvg)}</div>
+                        <div class="stat-change ${changeDir}">${changePct != 0 ? changeSymbol + Math.abs(changePct) + '% since tracking' : 'Stable'}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Lowest Listed</div>
+                        <div class="stat-value">${formatPrice(lowest)}</div>
+                        <div class="stat-change neutral">Across all models</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Highest Listed</div>
+                        <div class="stat-value">${formatPrice(highest)}</div>
+                        <div class="stat-change neutral">Across all models</div>
+                    </div>
+                </div>
+
+                <div class="index-chart-card">
+                    <h3>📈 Overall Market Average</h3>
+                    <div class="chart-wrap">
+                        <canvas id="indexChartAll"></canvas>
+                    </div>
+                </div>
+
+                <div class="index-split">
+                    <div class="index-chart-card">
+                        <h3>🟢 Ball Star Index</h3>
+                        <div class="chart-wrap-sm">
+                            <canvas id="indexChartBall"></canvas>
+                        </div>
+                    </div>
+                    <div class="index-chart-card">
+                        <h3>🔥 Super-Star Index</h3>
+                        <div class="chart-wrap-sm">
+                            <canvas id="indexChartSuper"></canvas>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Render charts
+            const allD = buildHistoryData();
+            const ballD = buildHistoryData(p => p.isBall);
+            const superD = buildHistoryData(p => p.isSuper);
+
+            indexCharts.push(createIndexChart('indexChartAll', allD, '#0071e3', 'rgba(0,113,227,'));
+            if (ballD.averages.length) indexCharts.push(createIndexChart('indexChartBall', ballD, '#34c759', 'rgba(52,199,89,'));
+            if (superD.averages.length) indexCharts.push(createIndexChart('indexChartSuper', superD, '#ff9500', 'rgba(255,149,0,'));
+        }
+
+        function createIndexChart(canvasId, data, lineColor, rgbaBase) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            return new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.displayDates,
+                    datasets: [{
+                        label: 'Average Price',
+                        data: data.averages,
+                        borderColor: lineColor,
+                        backgroundColor: function(context) {
+                            const chart = context.chart;
+                            const { ctx: c, chartArea } = chart;
+                            if (!chartArea) return rgbaBase + '0.08)';
+                            const gradient = c.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                            gradient.addColorStop(0, rgbaBase + '0.18)');
+                            gradient.addColorStop(1, rgbaBase + '0.01)');
+                            return gradient;
+                        },
+                        borderWidth: 2.5,
+                        pointRadius: 3,
+                        pointBackgroundColor: lineColor,
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointHoverRadius: 5,
+                        tension: 0.4,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#fff',
+                            titleColor: '#1d1d1f',
+                            bodyColor: '#1d1d1f',
+                            borderColor: '#e5e5e7',
+                            borderWidth: 1,
+                            titleFont: { family: "'Inter', sans-serif", size: 12, weight: '600' },
+                            bodyFont: { family: "'Inter', sans-serif", size: 14, weight: '700' },
+                            padding: 12,
+                            cornerRadius: 8,
+                            callbacks: { label: ctx => 'Avg: €' + ctx.parsed.y.toLocaleString('de-DE') }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#86868b', font: { family: "'Inter', sans-serif", size: 11 }, maxTicksLimit: 10 }
+                        },
+                        y: {
+                            grid: { color: '#f0f0f2', drawBorder: false },
+                            ticks: {
+                                color: '#86868b',
+                                font: { family: "'Inter', sans-serif", size: 11 },
+                                callback: val => '€' + val.toLocaleString('de-DE')
+                            },
+                            beginAtZero: false
+                        }
+                    }
+                }
             });
         }
 
@@ -684,7 +1090,17 @@
             clearTimeout(searchDebounce);
             searchDebounce = setTimeout(() => {
                 const val = searchInput.value.trim().toLowerCase();
+
+                // Switch to models page for search
+                if (val && activePage !== 'models') {
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelector('.nav-tab[data-page="models"]').classList.add('active');
+                    activePage = 'models';
+                    renderPage();
+                }
+
                 const resultsSection = document.getElementById('searchResults');
+                if (!resultsSection) return;
 
                 if (!val) {
                     resultsSection.classList.remove('active');
@@ -692,7 +1108,6 @@
                     return;
                 }
 
-                // Check if it's a URL paste
                 const slug = getProductId(val);
                 if (slug) {
                     const product = allProducts.find(p => p.slug === slug);
@@ -704,38 +1119,12 @@
                     }
                 }
 
-                // Otherwise text search
                 const matches = allProducts.filter(p => p.name.toLowerCase().includes(val));
                 if (matches.length) {
                     resultsSection.classList.add('active');
                     resultsSection.innerHTML = `<h2 class="section-title">Search Results</h2><div class="product-grid" id="searchGrid"></div>`;
                     const searchGrid = document.getElementById('searchGrid');
-                    // Reuse renderGrid logic but inline for search grid
-                    searchGrid.innerHTML = matches.map(p => {
-                        const fp40 = formatPrice(p.p40);
-                        const fp41 = formatPrice(p.p41);
-                        return `
-                        <div class="product-card" data-slug="${p.slug}">
-                            <div class="card-img-wrapper">
-                                ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : ''}
-                                ${p.isFav ? '<div class="vip-badge">⭐ VIP</div>' : ''}
-                            </div>
-                            <div class="card-body">
-                                <div class="card-name">${p.name}</div>
-                                <div class="card-prices">
-                                    <div class="card-price-tag">
-                                        <div class="sz-label">Size 40</div>
-                                        <div class="sz-price ${!fp40 ? 'na' : ''}">${fp40 || '—'}</div>
-                                    </div>
-                                    <div class="card-price-tag">
-                                        <div class="sz-label">Size 41</div>
-                                        <div class="sz-price ${!fp41 ? 'na' : ''}">${fp41 || '—'}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`;
-                    }).join('');
-
+                    searchGrid.innerHTML = matches.map(p => buildCardHtml(p)).join('');
                     searchGrid.querySelectorAll('.product-card').forEach(card => {
                         card.addEventListener('click', () => {
                             const product = allProducts.find(p => p.slug === card.dataset.slug);
@@ -759,16 +1148,13 @@
 
             const elP40 = document.getElementById('modalP40');
             const elP41 = document.getElementById('modalP41');
-            elP40.textContent = formatPrice(product.p40) || '—';
-            elP41.textContent = formatPrice(product.p41) || '—';
+            elP40.innerHTML = (formatPrice(product.p40) || '—') + ' ' + (product.p40 ? trendHtml(product.trend40) : '');
+            elP41.innerHTML = (formatPrice(product.p41) || '—') + ' ' + (product.p41 ? trendHtml(product.trend41) : '');
             elP40.className = 'mp-value' + (product.p40 ? '' : ' na');
             elP41.className = 'mp-value' + (product.p41 ? '' : ' na');
 
             document.getElementById('modalLink').href = product.url;
-
-            // Chart
             renderModalChart(product.hist40, product.hist41);
-
             overlay.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -780,17 +1166,12 @@
         }
 
         modalClose.addEventListener('click', closeModal);
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
         function renderModalChart(hist40, hist41) {
             const canvas = document.getElementById('modalChart');
             const noMsg = document.getElementById('noHistoryMsg');
-
             if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
 
             if (!hist40.length && !hist41.length) {
@@ -807,7 +1188,6 @@
             hist41.forEach(d => datesSet.add(d.date));
             const sortedDates = Array.from(datesSet).sort();
 
-            // Format dates for display (shorter labels)
             const displayDates = sortedDates.map(d => {
                 const parts = d.split(' ')[0].split('-');
                 return parts[2] + '/' + parts[1];
@@ -823,7 +1203,6 @@
             });
 
             const ctx = canvas.getContext('2d');
-
             chartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -896,14 +1275,10 @@
                     scales: {
                         x: {
                             grid: { display: false },
-                            ticks: {
-                                color: '#86868b',
-                                font: { family: "'Inter', sans-serif", size: 11 },
-                                maxTicksLimit: 8
-                            }
+                            ticks: { color: '#86868b', font: { family: "'Inter', sans-serif", size: 11 }, maxTicksLimit: 8 }
                         },
                         y: {
-                            grid: { color: '#f0f0f0', drawBorder: false },
+                            grid: { color: '#f0f0f2', drawBorder: false },
                             ticks: {
                                 color: '#86868b',
                                 font: { family: "'Inter', sans-serif", size: 11 },
