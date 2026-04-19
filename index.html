@@ -873,14 +873,16 @@
 
         function sortProducts() {
             allProducts.sort((a, b) => {
-                if (a.isFav !== b.isFav) return a.isFav ? -1 : 1;
                 switch (activeSort) {
                     case 'price-low': {
+                        // VIP pinned first only on default price sorts
+                        if (a.isFav !== b.isFav) return a.isFav ? -1 : 1;
                         const pa = Math.min(a.p40 || Infinity, a.p41 || Infinity);
                         const pb = Math.min(b.p40 || Infinity, b.p41 || Infinity);
                         return pa - pb;
                     }
                     case 'price-high': {
+                        if (a.isFav !== b.isFav) return a.isFav ? -1 : 1;
                         const pa = Math.max(a.p40 || 0, a.p41 || 0);
                         const pb = Math.max(b.p40 || 0, b.p41 || 0);
                         return pb - pa;
