@@ -230,6 +230,7 @@
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            position: relative;
         }
 
         .product-card:hover {
@@ -256,11 +257,17 @@
             object-fit: contain;
         }
 
-        .vip-badge {
+        .card-badges {
             position: absolute;
             top: 12px;
             left: 12px;
-            background: linear-gradient(135deg, #ff9500, #ff6723);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 5;
+        }
+
+        .vip-badge, .gone-badge {
             color: white;
             font-size: 0.65rem;
             font-weight: 700;
@@ -268,6 +275,46 @@
             border-radius: 99px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            width: fit-content;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .vip-badge {
+            background: linear-gradient(135deg, #ff9500, #ff6723);
+        }
+
+        .gone-badge {
+            background: #1d1d1f;
+        }
+
+        .btn-star {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #d2d2d7;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 10;
+        }
+
+        .btn-star:hover {
+            transform: scale(1.15);
+            background: white;
+        }
+
+        .btn-star.active {
+            color: #ffcc00;
         }
 
         .card-body {
@@ -726,10 +773,13 @@
                 <div>Avg: <strong id="statAvg">—</strong></div>
             </div>
         </div>
-        <nav class="nav-tabs" id="navTabs">
+        <nav class="nav-tabs" id="navTabs" style="overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;">
             <button class="nav-tab active" data-page="models">Models</button>
             <button class="nav-tab" data-page="index">Market Index</button>
             <button class="nav-tab" data-page="deals">Lowest Ever</button>
+            <button class="nav-tab" data-page="watchlist">My List ★</button>
+            <button class="nav-tab" data-page="digest">Daily Digest</button>
+            <button class="nav-tab" data-page="gone">Gone</button>
         </nav>
     </header>
 
@@ -779,6 +829,7 @@
         let activeFilter = 'all';
         let activeSort = 'price-low';
         let activePage = 'models';
+        let userWatchlist = JSON.parse(localStorage.getItem('cettireWatchlist') || '[]');
 
         // ─── HELPERS ───
         function getProductId(url) {
@@ -816,6 +867,35 @@
             if (product.hist41.length) dates.push(product.hist41[0].date);
             if (!dates.length) return '9999';
             return dates.sort()[0];
+        }
+
+        function checkChanged24h(product) {
+            const now = new Date();
+            const oneDayAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
+            // History format is "YYYY-MM-DD HH:MM"
+            const changed40 = product.hist40.length && (new Date(product.hist40[product.hist40.length - 1].date) > oneDayAgo);
+            const changed41 = product.hist41.length && (new Date(product.hist41[product.hist41.length - 1].date) > oneDayAgo);
+            return changed40 || changed41;
+        }
+
+        function toggleWatchlist(e, slug) {
+            e.stopPropagation(); // Prevent opening modal
+            const idx = userWatchlist.indexOf(slug);
+            if (idx > -1) {
+                userWatchlist.splice(idx, 1);
+                e.currentTarget.classList.remove('active');
+                e.currentTarget.innerHTML = '☆';
+            } else {
+                userWatchlist.push(slug);
+                e.currentTarget.classList.add('active');
+                e.currentTarget.innerHTML = '★';
+            }
+            localStorage.setItem('cettireWatchlist', JSON.stringify(userWatchlist));
+            
+            // If on the watchlist page, re-render to hide removed items
+            if (activePage === 'watchlist') {
+                renderWatchlistPage();
+            }
         }
 
         function trendHtml(trend) {
@@ -856,9 +936,10 @@
                 const allPrices41 = hist41.map(h => h.price);
                 const floor40 = allPrices40.length ? Math.min(...allPrices40) : null;
                 const floor41 = allPrices41.length ? Math.min(...allPrices41) : null;
+                const isGone = !doc.price_40 && !doc.price_41 && (hist40.length > 0 || hist41.length > 0);
 
-                allProducts.push({
-                    url, slug, name, isFav, isBall, isSuper,
+                const prod = {
+                    url, slug, name, isFav, isBall, isSuper, isGone,
                     img: doc.img || '',
                     p40: doc.price_40,
                     p41: doc.price_41,
@@ -866,7 +947,10 @@
                     trend40: getTrend(hist40),
                     trend41: getTrend(hist41),
                     floor40, floor41,
-                });
+                };
+                
+                prod.changed24h = checkChanged24h(prod);
+                allProducts.push(prod);
             }
             sortProducts();
         }
@@ -917,8 +1001,8 @@
         function renderDealsPage() {
             const main = document.getElementById('mainContent');
 
-            // Sort products by their absolute cheapest floor price
-            const sorted = [...allProducts].filter(p => p.floor40 !== null || p.floor41 !== null);
+            // Sort products by their absolute cheapest floor price (exclude gone)
+            const sorted = [...allProducts].filter(p => !p.isGone && (p.floor40 !== null || p.floor41 !== null));
             sorted.sort((a, b) => {
                 const fa = Math.min(a.floor40 || Infinity, a.floor41 || Infinity);
                 const fb = Math.min(b.floor40 || Infinity, b.floor41 || Infinity);
@@ -936,6 +1020,7 @@
             grid.innerHTML = sorted.map(p => {
                 const ff40 = formatPrice(p.floor40);
                 const ff41 = formatPrice(p.floor41);
+                const isWatched = userWatchlist.includes(p.slug);
 
                 // Gap badges
                 function gapBadge(floor, current) {
@@ -951,9 +1036,14 @@
 
                 return `
                 <div class="product-card" data-slug="${p.slug}">
+                    <button class="btn-star ${isWatched ? 'active' : ''}" onclick="toggleWatchlist(event, '${p.slug}')">
+                        ${isWatched ? '★' : '☆'}
+                    </button>
                     <div class="card-img-wrapper">
                         ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : ''}
-                        ${p.isFav ? '<div class="vip-badge">⭐ VIP</div>' : ''}
+                        <div class="card-badges">
+                            ${p.isFav ? '<div class="vip-badge">⭐ VIP</div>' : ''}
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="card-name">${p.name}</div>
@@ -986,8 +1076,9 @@
         // ═══════════════════════════════════════════
         function renderModelsPage() {
             const main = document.getElementById('mainContent');
-            const totalProducts = allProducts.length;
-            const prices = allProducts.flatMap(p => [p.p40, p.p41].filter(Boolean));
+            const availableProducts = allProducts.filter(p => !p.isGone);
+            const totalProducts = availableProducts.length;
+            const prices = availableProducts.flatMap(p => [p.p40, p.p41].filter(Boolean));
             const avg = prices.length ? Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) : 0;
 
             document.getElementById('statCount').textContent = totalProducts;
@@ -1040,11 +1131,12 @@
         }
 
         function getFilteredProducts() {
+            let list = allProducts.filter(p => !p.isGone);
             switch (activeFilter) {
-                case 'super': return allProducts.filter(p => p.isSuper);
-                case 'ball': return allProducts.filter(p => p.isBall);
-                case 'vip': return allProducts.filter(p => p.isFav);
-                default: return [...allProducts];
+                case 'super': return list.filter(p => p.isSuper);
+                case 'ball': return list.filter(p => p.isBall);
+                case 'vip': return list.filter(p => p.isFav);
+                default: return list;
             }
         }
 
@@ -1053,12 +1145,19 @@
             const fp41 = formatPrice(p.p41);
             const t40 = trendHtml(p.trend40);
             const t41 = trendHtml(p.trend41);
+            const isWatched = userWatchlist.includes(p.slug);
 
             return `
             <div class="product-card" data-slug="${p.slug}">
+                <button class="btn-star ${isWatched ? 'active' : ''}" onclick="toggleWatchlist(event, '${p.slug}')">
+                    ${isWatched ? '★' : '☆'}
+                </button>
                 <div class="card-img-wrapper">
                     ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : ''}
-                    ${p.isFav ? '<div class="vip-badge">⭐ VIP</div>' : ''}
+                    <div class="card-badges">
+                        ${p.isGone ? '<div class="gone-badge">Sold Out / Removed</div>' : ''}
+                        ${p.isFav ? '<div class="vip-badge">⭐ VIP</div>' : ''}
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="card-name">${p.name}</div>
@@ -1084,6 +1183,130 @@
             }
             grid.innerHTML = products.map(p => buildCardHtml(p)).join('');
             grid.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const product = allProducts.find(p => p.slug === card.dataset.slug);
+                    if (product) openModal(product);
+                });
+            });
+        }
+
+        // ═══════════════════════════════════════════
+        //  WATCHLIST PAGE
+        // ═══════════════════════════════════════════
+        function renderWatchlistPage() {
+            const main = document.getElementById('mainContent');
+            const list = allProducts.filter(p => userWatchlist.includes(p.slug));
+            
+            main.innerHTML = `
+                <h2 class="section-title">My Personal Watchlist</h2>
+                <p class="section-subtitle">${list.length} shoes saved to your browser</p>
+                <div class="product-grid" id="watchlistGrid"></div>
+            `;
+            
+            renderGridTo(list, document.getElementById('watchlistGrid'), 'You haven\'t saved any stars yet!');
+        }
+
+        // ═══════════════════════════════════════════
+        //  DAILY DIGEST PAGE
+        // ═══════════════════════════════════════════
+        function renderDigestPage() {
+            const main = document.getElementById('mainContent');
+            const list = allProducts.filter(p => p.changed24h && !p.isGone);
+            
+            main.innerHTML = `
+                <h2 class="section-title">Daily Digest</h2>
+                <p class="section-subtitle">Shoes with price movements in the last 24 hours.</p>
+                <div class="product-grid" id="digestGrid"></div>
+            `;
+            
+            renderGridTo(list, document.getElementById('digestGrid'), 'No price changes in the last 24 hours.');
+        }
+
+        // ═══════════════════════════════════════════
+        //  GONE TRACKER PAGE
+        // ═══════════════════════════════════════════
+        function renderGonePage() {
+            const main = document.getElementById('mainContent');
+            const list = allProducts.filter(p => p.isGone);
+            
+            main.innerHTML = `
+                <h2 class="section-title">Sold Out / Removed</h2>
+                <p class="section-subtitle">Ghost listings: these models were recorded but are no longer available in sizes 40/41.</p>
+                <div class="product-grid" id="goneGrid"></div>
+            `;
+            
+            renderGridTo(list, document.getElementById('goneGrid'), 'No ghost listings yet.');
+        }
+
+        function renderGridTo(products, gridEl, emptyMsg) {
+            if (!products.length) {
+                gridEl.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="emoji">👟</div><p>${emptyMsg}</p></div>`;
+                return;
+            }
+            gridEl.innerHTML = products.map(p => buildCardHtml(p)).join('');
+            gridEl.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const product = allProducts.find(p => p.slug === card.dataset.slug);
+                    if (product) openModal(product);
+                });
+            });
+        }
+
+        // ═══════════════════════════════════════════
+        //  WATCHLIST PAGE
+        // ═══════════════════════════════════════════
+        function renderWatchlistPage() {
+            const main = document.getElementById('mainContent');
+            const list = allProducts.filter(p => userWatchlist.includes(p.slug));
+            
+            main.innerHTML = `
+                <h2 class="section-title">My Personal Watchlist</h2>
+                <p class="section-subtitle">${list.length} shoes saved to your browser</p>
+                <div class="product-grid" id="watchlistGrid"></div>
+            `;
+            
+            renderGridTo(list, document.getElementById('watchlistGrid'), 'You haven\'t saved any stars yet!');
+        }
+
+        // ═══════════════════════════════════════════
+        //  DAILY DIGEST PAGE
+        // ═══════════════════════════════════════════
+        function renderDigestPage() {
+            const main = document.getElementById('mainContent');
+            const list = allProducts.filter(p => p.changed24h && !p.isGone);
+            
+            main.innerHTML = `
+                <h2 class="section-title">Daily Digest</h2>
+                <p class="section-subtitle">Shoes with price movements in the last 24 hours.</p>
+                <div class="product-grid" id="digestGrid"></div>
+            `;
+            
+            renderGridTo(list, document.getElementById('digestGrid'), 'No price changes in the last 24 hours.');
+        }
+
+        // ═══════════════════════════════════════════
+        //  GONE TRACKER PAGE
+        // ═══════════════════════════════════════════
+        function renderGonePage() {
+            const main = document.getElementById('mainContent');
+            const list = allProducts.filter(p => p.isGone);
+            
+            main.innerHTML = `
+                <h2 class="section-title">Sold Out / Removed</h2>
+                <p class="section-subtitle">Ghost listings: these models were recorded but are no longer available in sizes 40/41.</p>
+                <div class="product-grid" id="goneGrid"></div>
+            `;
+            
+            renderGridTo(list, document.getElementById('goneGrid'), 'No ghost listings right now.');
+        }
+
+        function renderGridTo(products, gridEl, emptyMsg) {
+            if (!products.length) {
+                gridEl.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="emoji">👟</div><p>${emptyMsg}</p></div>`;
+                return;
+            }
+            gridEl.innerHTML = products.map(p => buildCardHtml(p)).join('');
+            gridEl.querySelectorAll('.product-card').forEach(card => {
                 card.addEventListener('click', () => {
                     const product = allProducts.find(p => p.slug === card.dataset.slug);
                     if (product) openModal(product);
