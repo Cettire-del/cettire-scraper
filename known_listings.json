@@ -2864,7 +2864,7 @@
         "text": "Neue Saison Golden Goose Deluxe Brand Stardan Schn\u00fcrschuhe \u20ac612,85\u20ac429,00",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/391687d37ee2669dc9e1bf60e6f477ef.jpg",
         "price_40": 429.0,
-        "price_41": 429.0,
+        "price_41": null,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -3626,24 +3626,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-952873151": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-952873151",
-        "text": "Golden Goose Deluxe Brand Super Star Schn\u00fcrschuhe \u20ac648,55\u20ac453,98",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/5c40dfda9ecab570a9f7f70950222047.jpg",
-        "price_40": null,
-        "price_41": 453.98,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 430.45
-            },
-            {
-                "date": "2026-04-16 09:17",
-                "price": 453.98
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-952828799": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-952828799",
         "text": "Neue Saison Golden Goose Deluxe Brand Super Star Schn\u00fcrschuhe \u20ac612,85\u20ac482,62",
@@ -3746,17 +3728,17 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-955569551": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-955569551",
-        "text": "Golden Goose Deluxe Brand Super-Star-Schn\u00fcrsneaker von \u20ac618,80\u20ac541,45",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/574390b5a95548e82b24c037e5676ff0.jpg",
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-francy-penstar-glittered-sneakers-959106699": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-francy-penstar-glittered-sneakers-959106699",
+        "text": "Neue Saison Golden Goose Deluxe Brand Francy Penstar Glitzer-Sneaker \u20ac879,41\u20ac615,59",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/b39a70a2f3c8073f8669a2113f452607.jpg",
         "price_40": null,
-        "price_41": 541.45,
+        "price_41": 615.59,
         "history_40": [],
         "history_41": [
             {
                 "date": "2026-04-13 13:28",
-                "price": 541.45
+                "price": 615.59
             }
         ]
     },
@@ -3802,17 +3784,17 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slide-penstar-lace-up-sneakers-960822456": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slide-penstar-lace-up-sneakers-960822456",
-        "text": "Neue Saison Golden Goose Deluxe Brand Slide Penstar Schn\u00fcrsneaker \u20ac612,85\u20ac509,43",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/9b4ed668d8d0f22690e8d7b28c7c987f.jpg",
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201",
+        "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Lae-Up Sneakers \u20ac708,05\u20ac588,57",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a597d5211cff5be47f1a571cf3770d6e.jpg",
         "price_40": null,
-        "price_41": 509.43,
+        "price_41": 588.57,
         "history_40": [],
         "history_41": [
             {
-                "date": "2026-04-21 07:17",
-                "price": 509.43
+                "date": "2026-04-13 13:28",
+                "price": 588.57
             }
         ]
     },
@@ -3830,20 +3812,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-francy-penstar-glittered-sneakers-959106699": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-francy-penstar-glittered-sneakers-959106699",
-        "text": "Neue Saison Golden Goose Deluxe Brand Francy Penstar Glitzer-Sneaker \u20ac879,41\u20ac615,59",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/b39a70a2f3c8073f8669a2113f452607.jpg",
-        "price_40": null,
-        "price_41": 615.59,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 615.59
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-sequin-embellished-slip-on-sneakers-961156755": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-sequin-embellished-slip-on-sneakers-961156755",
         "text": "Neue Saison Golden Goose Deluxe Brand Golden Goose Deluxe Marken-Sneaker mit Paillettenbesatz zum Hineinschl\u00fcpfen \u20ac648,55\u20ac453,98",
@@ -3858,17 +3826,49 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lae-up-sneakers-964276201",
-        "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Lae-Up Sneakers \u20ac708,05\u20ac588,57",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a597d5211cff5be47f1a571cf3770d6e.jpg",
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-952873151": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-952873151",
+        "text": "Golden Goose Deluxe Brand Super Star Schn\u00fcrschuhe \u20ac648,55\u20ac453,98",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/5c40dfda9ecab570a9f7f70950222047.jpg",
         "price_40": null,
-        "price_41": 588.57,
+        "price_41": 453.98,
         "history_40": [],
         "history_41": [
             {
                 "date": "2026-04-13 13:28",
-                "price": 588.57
+                "price": 430.45
+            },
+            {
+                "date": "2026-04-16 09:17",
+                "price": 453.98
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-955569551": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-955569551",
+        "text": "Golden Goose Deluxe Brand Super-Star-Schn\u00fcrsneaker von \u20ac618,80\u20ac541,45",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/574390b5a95548e82b24c037e5676ff0.jpg",
+        "price_40": null,
+        "price_41": 541.45,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 541.45
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slide-penstar-lace-up-sneakers-960822456": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slide-penstar-lace-up-sneakers-960822456",
+        "text": "Neue Saison Golden Goose Deluxe Brand Slide Penstar Schn\u00fcrsneaker \u20ac612,85\u20ac509,43",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/9b4ed668d8d0f22690e8d7b28c7c987f.jpg",
+        "price_40": null,
+        "price_41": 509.43,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-21 07:17",
+                "price": 509.43
             }
         ]
     }
