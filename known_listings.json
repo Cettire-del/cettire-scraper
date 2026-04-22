@@ -1389,10 +1389,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-low-top-sneakers-959555901": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-low-top-sneakers-959555901",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar Low-Top-Sneaker von \u20ac591,70\u20ac403,84",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar Low-Top-Sneaker von \u20ac593,81\u20ac415,67",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/83db4c94c521a3e06e890a5c1133a76b.jpg",
         "price_40": 403.84,
-        "price_41": null,
+        "price_41": 415.67,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -1411,6 +1411,10 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 403.84
+            },
+            {
+                "date": "2026-04-22 16:17",
+                "price": 415.67
             }
         ]
     },
@@ -2875,10 +2879,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-stardan-lace-up-sneakers-961511030": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-stardan-lace-up-sneakers-961511030",
-        "text": "Neue Saison Golden Goose Deluxe Brand Stardan Schn\u00fcrschuhe \u20ac628,30\u20ac428,81",
+        "text": "Neue Saison Golden Goose Deluxe Brand Stardan Schn\u00fcrschuhe \u20ac612,85\u20ac429,00",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/391687d37ee2669dc9e1bf60e6f477ef.jpg",
         "price_40": 429.0,
-        "price_41": 428.81,
+        "price_41": null,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
