@@ -455,37 +455,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-933062010": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-933062010",
-        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac593,81\u20ac441,65",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a2f9aa76e1366112f747741de7a19bee.jpg",
-        "price_40": 409.21,
-        "price_41": 441.65,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 390.47
-            },
-            {
-                "date": "2026-04-15 06:17",
-                "price": 409.21
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 441.65
-            },
-            {
-                "date": "2026-04-17 20:17",
-                "price": 378.75
-            },
-            {
-                "date": "2026-04-18 23:17",
-                "price": 441.65
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-low-top-sneakers-954817986": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-low-top-sneakers-954817986",
         "text": "Neue Saison Golden Goose Deluxe Brand Ball Star 2 Niedrige Sneakers \u20ac612,85\u20ac482,62",
@@ -3663,6 +3632,37 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 604.45
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-933062010": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-933062010",
+        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac593,81\u20ac441,65",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a2f9aa76e1366112f747741de7a19bee.jpg",
+        "price_40": null,
+        "price_41": 441.65,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 390.47
+            },
+            {
+                "date": "2026-04-15 06:17",
+                "price": 409.21
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 441.65
+            },
+            {
+                "date": "2026-04-17 20:17",
+                "price": 378.75
+            },
+            {
+                "date": "2026-04-18 23:17",
+                "price": 441.65
             }
         ]
     },
