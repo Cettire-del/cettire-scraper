@@ -2170,7 +2170,7 @@
         "text": "Golden Goose Deluxe Brand Ballstar Low-Top-Sneaker von \u20ac606,90\u20ac531,04",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/741320f0c8a034f7865047e616518a08.jpg",
         "price_40": 531.04,
-        "price_41": null,
+        "price_41": 531.04,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -2181,6 +2181,10 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 519.58
+            },
+            {
+                "date": "2026-04-23 21:17",
+                "price": 531.04
             }
         ]
     },
