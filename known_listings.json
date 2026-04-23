@@ -2009,12 +2009,16 @@
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-lightstar-lace-up-sneakers-946282481",
         "text": "Neue Saison Golden Goose Deluxe Brand \u2013 Lightstar \u2013 Schn\u00fcrsneaker \u20ac708,05\u20ac464,66",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/fce740094fc63d3c60c0ad0630fd10b4.jpg",
-        "price_40": 464.66,
+        "price_40": 477.05,
         "price_41": 464.66,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
                 "price": 464.66
+            },
+            {
+                "date": "2026-04-23 20:17",
+                "price": 477.05
             }
         ],
         "history_41": [
@@ -2163,10 +2167,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-low-top-sneakers-955412232": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-low-top-sneakers-955412232",
-        "text": "Golden Goose Deluxe Brand Ballstar Low-Top-Sneaker von \u20ac593,81\u20ac519,58",
+        "text": "Golden Goose Deluxe Brand Ballstar Low-Top-Sneaker von \u20ac606,90\u20ac531,04",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/741320f0c8a034f7865047e616518a08.jpg",
         "price_40": 531.04,
-        "price_41": 519.58,
+        "price_41": null,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
