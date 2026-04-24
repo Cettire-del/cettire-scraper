@@ -509,7 +509,7 @@
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-lace-up-sneakers-964730155": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-lace-up-sneakers-964730155",
         "text": "Neue Saison Golden Goose Deluxe Brand Superstar-Schn\u00fcrsneaker von \u20ac618,80\u20ac406,09",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/134f51bcb1c292738128d1bfc9ff3a6f.jpg",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/4c39d53b5c1b997ad78b8848dd3fd314.jpg",
         "price_40": 406.09,
         "price_41": 406.09,
         "history_40": [
@@ -951,9 +951,9 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-low-top-sneakers-958982048": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-low-top-sneakers-958982048",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ball Star Low-Top-Sneaker von \u20ac577,15\u20ac479,76",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ball Star Low-Top-Sneaker von \u20ac606,90\u20ac531,04",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/6931e81b12e10059d39c2ed58d527f36.jpg",
-        "price_40": 479.76,
+        "price_40": 531.04,
         "price_41": null,
         "history_40": [
             {
@@ -963,6 +963,10 @@
             {
                 "date": "2026-04-15 06:17",
                 "price": 479.76
+            },
+            {
+                "date": "2026-04-24 09:17",
+                "price": 531.04
             }
         ],
         "history_41": []
@@ -2674,10 +2678,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-net-lace-up-sneakers-960126455": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-net-lace-up-sneakers-960126455",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar Net Schn\u00fcrsneaker \u20ac577,15\u20ac404,00",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar Net Schn\u00fcrsneaker \u20ac577,15\u20ac388,85",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/46971e65f9ef6f85d11ce7495f8924b9.jpg",
         "price_40": 353.5,
-        "price_41": 404.0,
+        "price_41": 388.85,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -2708,6 +2712,10 @@
             {
                 "date": "2026-04-23 15:17",
                 "price": 404.0
+            },
+            {
+                "date": "2026-04-24 09:17",
+                "price": 388.85
             }
         ]
     },
