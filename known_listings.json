@@ -240,10 +240,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-marathon-m77-sneakers-940989596": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-marathon-m77-sneakers-940989596",
-        "text": "Golden Goose Deluxe Brand Running Marathon M77 Turnschuhe \u20ac675,09\u20ac443,03",
+        "text": "Golden Goose Deluxe Brand Running Marathon M77 Turnschuhe \u20ac553,35\u20ac363,14",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/dcc32528cf156b21053ed46207405d8d.jpg",
         "price_40": 490.28,
-        "price_41": 443.03,
+        "price_41": 363.14,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -254,6 +254,10 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 443.03
+            },
+            {
+                "date": "2026-04-24 08:17",
+                "price": 363.14
             }
         ]
     },
@@ -504,20 +508,28 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-lace-up-sneakers-964730155": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-lace-up-sneakers-964730155",
-        "text": "Neue Saison Golden Goose Deluxe Brand Superstar-Schn\u00fcrsneaker von \u20ac618,80\u20ac433,16",
+        "text": "Neue Saison Golden Goose Deluxe Brand Superstar-Schn\u00fcrsneaker von \u20ac618,80\u20ac406,09",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/134f51bcb1c292738128d1bfc9ff3a6f.jpg",
-        "price_40": 433.16,
-        "price_41": 433.16,
+        "price_40": 406.09,
+        "price_41": 406.09,
         "history_40": [
             {
                 "date": "2026-04-23 06:17",
                 "price": 433.16
+            },
+            {
+                "date": "2026-04-24 08:17",
+                "price": 406.09
             }
         ],
         "history_41": [
             {
                 "date": "2026-04-23 06:17",
                 "price": 433.16
+            },
+            {
+                "date": "2026-04-24 08:17",
+                "price": 406.09
             }
         ]
     },
@@ -2235,7 +2247,7 @@
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-sneakers-916528602",
         "text": "Neue Saison Golden Goose Deluxe Brand Super-Star Low-Top-Sneaker von \u20ac577,15\u20ac378,75",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/0657a67ea9f425c9fee13795858ec5cb.jpg",
-        "price_40": 378.75,
+        "price_40": 374.85,
         "price_41": 378.75,
         "history_40": [
             {
@@ -2253,6 +2265,10 @@
             {
                 "date": "2026-04-23 08:17",
                 "price": 378.75
+            },
+            {
+                "date": "2026-04-24 08:17",
+                "price": 374.85
             }
         ],
         "history_41": [
@@ -2266,7 +2282,7 @@
         "url": "https://www.cettire.com/de/products/forty-2-sneakers-in-white-leather-and-fabric-944344033",
         "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Schn\u00fcrsneaker \u20ac708,05\u20ac433,68",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/9d103a5f6e2c4bc4937b3a5008739f18.jpg",
-        "price_40": 501.83,
+        "price_40": 458.46,
         "price_41": 433.68,
         "history_40": [
             {
@@ -2276,6 +2292,10 @@
             {
                 "date": "2026-04-17 09:17",
                 "price": 501.83
+            },
+            {
+                "date": "2026-04-24 08:17",
+                "price": 458.46
             }
         ],
         "history_41": [
@@ -3000,7 +3020,7 @@
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-star-patch-low-top-sneakers-961347869",
         "text": "Neue Saison Golden Goose Deluxe Brand Low-Top-Sneaker mit Sternenaufn\u00e4her \u20ac648,55\u20ac471,01",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/8a5abf803daa92f5be0b77cfc8c311e4.jpg",
-        "price_40": 510.73,
+        "price_40": 471.01,
         "price_41": 471.01,
         "history_40": [
             {
@@ -3010,6 +3030,10 @@
             {
                 "date": "2026-04-17 17:17",
                 "price": 510.73
+            },
+            {
+                "date": "2026-04-24 08:17",
+                "price": 471.01
             }
         ],
         "history_41": [
