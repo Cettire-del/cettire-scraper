@@ -584,10 +584,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-933062010": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-933062010",
-        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac577,15\u20ac388,85",
+        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac577,15\u20ac425,92",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/39bf00b7dff4a8d7ff9aa87054689c8c.jpg",
         "price_40": 419.16,
-        "price_41": 388.85,
+        "price_41": 425.92,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -622,6 +622,10 @@
             {
                 "date": "2026-04-24 19:17",
                 "price": 388.85
+            },
+            {
+                "date": "2026-04-25 19:17",
+                "price": 425.92
             }
         ]
     },
