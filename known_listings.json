@@ -2502,10 +2502,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-sneakers-959657797": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-sneakers-959657797",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ball Star Turnschuhe \u20ac577,15\u20ac388,85",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ball Star Turnschuhe \u20ac577,15\u20ac419,16",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/fb19d4c6416775595de3ca203869f87d.jpg",
         "price_40": 415.67,
-        "price_41": 388.85,
+        "price_41": 419.16,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -2532,6 +2532,10 @@
             {
                 "date": "2026-04-24 07:17",
                 "price": 388.85
+            },
+            {
+                "date": "2026-04-25 16:17",
+                "price": 419.16
             }
         ]
     },
@@ -4246,15 +4250,19 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-lace-up-sneakers-939500600": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-lace-up-sneakers-939500600",
-        "text": "Golden Goose Deluxe Brand Ball Star Schn\u00fcrschuhe \u20ac756,84\u20ac397,34",
+        "text": "Golden Goose Deluxe Brand Ball Star Schn\u00fcrschuhe \u20ac642,60\u20ac506,05",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/23bc8306fefc799ab953285525ec01f2.jpg",
         "price_40": null,
-        "price_41": 397.34,
+        "price_41": 506.05,
         "history_40": [],
         "history_41": [
             {
                 "date": "2026-04-13 13:28",
                 "price": 397.34
+            },
+            {
+                "date": "2026-04-25 16:17",
+                "price": 506.05
             }
         ]
     },
