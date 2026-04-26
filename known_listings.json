@@ -2522,10 +2522,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-sneakers-959657797": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-sneakers-959657797",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ball Star Turnschuhe \u20ac577,15\u20ac419,16",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ball Star Turnschuhe \u20ac593,81\u20ac415,67",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/fb19d4c6416775595de3ca203869f87d.jpg",
         "price_40": 415.67,
-        "price_41": 419.16,
+        "price_41": 415.67,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -2556,6 +2556,10 @@
             {
                 "date": "2026-04-25 16:17",
                 "price": 419.16
+            },
+            {
+                "date": "2026-04-26 10:17",
+                "price": 415.67
             }
         ]
     },
