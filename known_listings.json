@@ -4000,6 +4000,29 @@
             }
         ]
     },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217",
+        "text": "Neue Saison Golden Goose Deluxe Brand Laufschuhe zum Schn\u00fcren \u20ac612,85\u20ac429,00",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/8f9bbbaf1da19f634d98e56ae9e75d3b.jpg",
+        "price_40": null,
+        "price_41": 429.0,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 486.78
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 482.62
+            },
+            {
+                "date": "2026-04-23 13:17",
+                "price": 429.0
+            }
+        ]
+    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-marathon-m-2000-sneakers-938611940": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-marathon-m-2000-sneakers-938611940",
         "text": "Golden Goose Deluxe Brand Marathon M Sneaker \u20ac630,70\u20ac408,38",
@@ -4011,6 +4034,20 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 408.38
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-950380400": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-950380400",
+        "text": "Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac606,90\u20ac531,04",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/2995c61eb3695538733c2faf166eb4f6.jpg",
+        "price_40": null,
+        "price_41": 531.04,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 531.04
             }
         ]
     },
@@ -4075,43 +4112,6 @@
             {
                 "date": "2026-04-19 10:17",
                 "price": 387.34
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217",
-        "text": "Neue Saison Golden Goose Deluxe Brand Laufschuhe zum Schn\u00fcren \u20ac612,85\u20ac429,00",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/8f9bbbaf1da19f634d98e56ae9e75d3b.jpg",
-        "price_40": null,
-        "price_41": 429.0,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 486.78
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 482.62
-            },
-            {
-                "date": "2026-04-23 13:17",
-                "price": 429.0
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-950380400": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-950380400",
-        "text": "Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac606,90\u20ac531,04",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/2995c61eb3695538733c2faf166eb4f6.jpg",
-        "price_40": null,
-        "price_41": 531.04,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 531.04
             }
         ]
     },
