@@ -1496,10 +1496,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-sneakers-951363020": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-sneakers-951363020",
-        "text": "Golden Goose Deluxe Brand Super Star Schn\u00fcrschuhe \u20ac636,65\u20ac389,95",
+        "text": "Golden Goose Deluxe Brand Super Star Schn\u00fcrschuhe \u20ac612,85\u20ac482,62",
         "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/3d793a4c10a5e38b3006376c4d97de56.jpg",
         "price_40": 389.95,
-        "price_41": null,
+        "price_41": 482.62,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -1514,6 +1514,10 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 429.0
+            },
+            {
+                "date": "2026-04-27 19:17",
+                "price": 482.62
             }
         ]
     },
