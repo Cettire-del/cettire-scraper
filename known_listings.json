@@ -4046,6 +4046,43 @@
             }
         ]
     },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217",
+        "text": "Neue Saison Golden Goose Deluxe Brand Laufschuhe zum Schn\u00fcren \u20ac612,85\u20ac429,00",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/8f9bbbaf1da19f634d98e56ae9e75d3b.jpg",
+        "price_40": null,
+        "price_41": 429.0,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 486.78
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 482.62
+            },
+            {
+                "date": "2026-04-23 13:17",
+                "price": 429.0
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-950380400": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-950380400",
+        "text": "Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac606,90\u20ac531,04",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/2995c61eb3695538733c2faf166eb4f6.jpg",
+        "price_40": null,
+        "price_41": 531.04,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 531.04
+            }
+        ]
+    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brandsoul-star-low-top-sneakers-938611962": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brandsoul-star-low-top-sneakers-938611962",
         "text": "Golden Goose Deluxe Brand Soul Star Low-Top-Sneaker \u20ac470,05\u20ac390,73",
@@ -4147,29 +4184,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217",
-        "text": "Neue Saison Golden Goose Deluxe Brand Laufschuhe zum Schn\u00fcren \u20ac612,85\u20ac429,00",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/8f9bbbaf1da19f634d98e56ae9e75d3b.jpg",
-        "price_40": null,
-        "price_41": 429.0,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 486.78
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 482.62
-            },
-            {
-                "date": "2026-04-23 13:17",
-                "price": 429.0
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slip-on-sneakers-949047751": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slip-on-sneakers-949047751",
         "text": "Neue Saison Golden Goose Deluxe Brand VCE Penstar Slip-On-Sneaker \u20ac416,50\u20ac340,49",
@@ -4208,20 +4222,6 @@
             {
                 "date": "2026-04-24 08:17",
                 "price": 363.14
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-950380400": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-950380400",
-        "text": "Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac606,90\u20ac531,04",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/2995c61eb3695538733c2faf166eb4f6.jpg",
-        "price_40": null,
-        "price_41": 531.04,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 531.04
             }
         ]
     },
