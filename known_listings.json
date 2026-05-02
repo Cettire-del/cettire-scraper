@@ -940,6 +940,25 @@
             }
         ]
     },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-964330423": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-964330423",
+        "text": "Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac577,15\u20ac429,26",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/22b6bd3dfcca7086bf7fb2b685bc29bd.jpg",
+        "price_40": 429.26,
+        "price_41": 429.26,
+        "history_40": [
+            {
+                "date": "2026-04-30 16:17",
+                "price": 429.26
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-30 16:17",
+                "price": 429.26
+            }
+        ]
+    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-931786399": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-931786399",
         "text": "Neue Saison Golden Goose Deluxe Brand Soul Star Schn\u00fcr-Sneaker \u20ac470,05\u20ac329,03",
@@ -1000,10 +1019,10 @@
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-959197660": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-959197660",
-        "text": "Neue Saison Golden Goose Deluxe Brand Super-Star Low-Top-Sneaker von \u20ac827,74\u20ac506,99",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/b396bf6b2bf655488b217069a7d29de8.jpg",
-        "price_40": 572.34,
-        "price_41": 506.99,
+        "text": "Neue Saison Golden Goose Deluxe Brand Super-Star Low-Top-Sneaker von \u20ac577,15\u20ac429,26",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/545a30c7c6790b9d43eb499087eea9a1.jpg",
+        "price_40": 429.26,
+        "price_41": 429.26,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
@@ -1020,6 +1039,10 @@
             {
                 "date": "2026-04-22 19:17",
                 "price": 572.34
+            },
+            {
+                "date": "2026-05-02 09:17",
+                "price": 429.26
             }
         ],
         "history_41": [
@@ -1030,6 +1053,10 @@
             {
                 "date": "2026-04-28 21:17",
                 "price": 506.99
+            },
+            {
+                "date": "2026-05-02 09:17",
+                "price": 429.26
             }
         ]
     },
@@ -1236,6 +1263,45 @@
             {
                 "date": "2026-04-24 16:17",
                 "price": 464.66
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-963118970": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-963118970",
+        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Schn\u00fcrschuhe \u20ac612,85\u20ac402,18",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/1f75ee30da0d0498b19bb659392bf97d.jpg",
+        "price_40": 402.18,
+        "price_41": 402.18,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 439.72
+            },
+            {
+                "date": "2026-04-16 11:17",
+                "price": 407.55
+            },
+            {
+                "date": "2026-04-19 06:17",
+                "price": 440.66
+            },
+            {
+                "date": "2026-04-23 13:17",
+                "price": 402.18
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 439.72
+            },
+            {
+                "date": "2026-04-16 11:17",
+                "price": 407.55
+            },
+            {
+                "date": "2026-04-21 08:17",
+                "price": 402.18
             }
         ]
     },
@@ -1812,7 +1878,7 @@
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-dad-star-lace-up-sneakers-959370716": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-dad-star-lace-up-sneakers-959370716",
         "text": "Neue Saison Golden Goose Deluxe Brand Dad Star Schn\u00fcrschuhe \u20ac708,05\u20ac495,63",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/1fe94e5df88bc089770ae7f27979ef1a.jpg",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/3419467cd715e1c2df1e557cb7fa3433.jpg",
         "price_40": 433.68,
         "price_41": 495.63,
         "history_40": [
@@ -1893,6 +1959,55 @@
                 "price": 343.86
             }
         ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sole-lace-up-sneakers-959182600": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sole-lace-up-sneakers-959182600",
+        "text": "Neue Saison Golden Goose Deluxe Brand Schn\u00fcrschuhe mit Laufsohle \u20ac665,21\u20ac465,65",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f9d805f49116d75556deb1a1a1cf9e54.jpg",
+        "price_40": 465.65,
+        "price_41": 465.65,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 465.65
+            },
+            {
+                "date": "2026-04-16 06:17",
+                "price": 453.98
+            },
+            {
+                "date": "2026-04-16 14:17",
+                "price": 465.65
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 465.65
+            },
+            {
+                "date": "2026-04-16 06:17",
+                "price": 453.98
+            },
+            {
+                "date": "2026-04-23 14:18",
+                "price": 465.65
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-956753118": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-956753118",
+        "text": "Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac618,80\u20ac541,45",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f9ee7ce81a23d971b36673a7f1e82197.jpg",
+        "price_40": 541.45,
+        "price_41": null,
+        "history_40": [
+            {
+                "date": "2026-05-01 08:17",
+                "price": 541.45
+            }
+        ],
+        "history_41": []
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-958982078": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-958982078",
@@ -2355,6 +2470,33 @@
             }
         ]
     },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-960815296": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-960815296",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac577,15\u20ac404,00",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a3f20c6666ca9b4cf0419e7371ca5e1a.jpg",
+        "price_40": 404.0,
+        "price_41": 404.0,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 415.67
+            },
+            {
+                "date": "2026-04-23 13:17",
+                "price": 404.0
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 415.67
+            },
+            {
+                "date": "2026-04-23 13:17",
+                "price": 404.0
+            }
+        ]
+    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-low-top-sneakers-954817986": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ball-star-low-top-sneakers-954817986",
         "text": "Neue Saison Golden Goose Deluxe Brand Ball Star 2 Niedrige Sneakers \u20ac612,85\u20ac509,43",
@@ -2498,45 +2640,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-studded-star-sneakers-963119015": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-studded-star-sneakers-963119015",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar Studded Star Sneakers \u20ac749,70\u20ac518,23",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/fbcc1889f45f4cf2b4d7bd8bf78d24e8.jpg",
-        "price_40": 518.23,
-        "price_41": 518.23,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 532.29
-            },
-            {
-                "date": "2026-04-14 21:17",
-                "price": 544.47
-            },
-            {
-                "date": "2026-04-14 22:17",
-                "price": 532.29
-            },
-            {
-                "date": "2026-04-14 23:17",
-                "price": 544.47
-            },
-            {
-                "date": "2026-04-17 08:17",
-                "price": 518.23
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 532.29
-            },
-            {
-                "date": "2026-04-17 09:17",
-                "price": 518.23
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-961513366": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-lace-up-sneakers-961513366",
         "text": "Neue Saison Golden Goose Deluxe Brand Soul Star Schn\u00fcr-Sneaker \u20ac470,05\u20ac296,13",
@@ -2655,41 +2758,6 @@
         ],
         "history_41": []
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-marathon-sneakers-962142477": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-marathon-sneakers-962142477",
-        "text": "Neue Saison Golden Goose Deluxe Brand Marathon Low-Top-Sneaker \u20ac553,35\u20ac363,14",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/dbeb1a4c63af33c1127b57c395533c3f.jpg",
-        "price_40": 363.14,
-        "price_41": 363.14,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 390.68
-            },
-            {
-                "date": "2026-04-15 18:17",
-                "price": 387.34
-            },
-            {
-                "date": "2026-04-23 10:17",
-                "price": 363.14
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 390.68
-            },
-            {
-                "date": "2026-04-15 18:17",
-                "price": 387.34
-            },
-            {
-                "date": "2026-04-23 06:17",
-                "price": 363.14
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-962542841": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-962542841",
         "text": "Neue Saison Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac612,85\u20ac386,10",
@@ -2783,6 +2851,33 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 454.51
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sneakers-959666275": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sneakers-959666275",
+        "text": "Neue Saison Golden Goose Deluxe Brand Laufschuhe der Marke Golden Goose Deluxe \u20ac612,85\u20ac429,00",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/628ccec7ac8f90f86fa45936910afe81.jpg",
+        "price_40": 429.0,
+        "price_41": 429.0,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 482.62
+            },
+            {
+                "date": "2026-04-23 12:17",
+                "price": 429.0
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 482.62
+            },
+            {
+                "date": "2026-04-23 12:17",
+                "price": 429.0
             }
         ]
     },
@@ -2921,33 +3016,6 @@
             {
                 "date": "2026-04-29 13:17",
                 "price": 536.24
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sole-lace-up-sneakers-959717290": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sole-lace-up-sneakers-959717290",
-        "text": "Neue Saison Golden Goose Deluxe Brand Schn\u00fcrschuhe mit Laufsohle \u20ac648,55\u20ac453,98",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/b2f510bf94b983f76e91f3dd4616e593.jpg",
-        "price_40": 453.98,
-        "price_41": 453.98,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 465.65
-            },
-            {
-                "date": "2026-04-23 13:17",
-                "price": 453.98
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 465.65
-            },
-            {
-                "date": "2026-04-23 13:17",
-                "price": 453.98
             }
         ]
     },
@@ -3249,29 +3317,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-low-top-sneakers-961615290": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-low-top-sneakers-961615290",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar Low-Top-Sneaker von \u20ac606,90\u20ac531,04",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/9dc3d66a8a09fd660f141363108ea880.jpg",
-        "price_40": 378.75,
-        "price_41": 531.04,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 404.0
-            },
-            {
-                "date": "2026-04-23 06:17",
-                "price": 378.75
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 531.04
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-954308729": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-954308729",
         "text": "Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac618,80\u20ac541,45",
@@ -3288,6 +3333,71 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 541.45
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-sky-star-high-top-sneakers-956752288": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-sky-star-high-top-sneakers-956752288",
+        "text": "Neue Saison Golden Goose Deluxe Brand Sky Star High-Top-Sneakers \u20ac724,71\u20ac507,30",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/7926111e3e971619b5fabad1cb5af0d6.jpg",
+        "price_40": 507.3,
+        "price_41": 507.3,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 507.3
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 507.3
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983308": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983308",
+        "text": "Golden Goose Deluxe Brand Soul Star Low-Top-Sneaker \u20ac470,05\u20ac341,37",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f109496c3c0c9400baddf188305f520a.jpg",
+        "price_40": 341.37,
+        "price_41": 341.37,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 353.14
+            },
+            {
+                "date": "2026-04-17 08:17",
+                "price": 341.37
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 353.14
+            },
+            {
+                "date": "2026-04-17 09:17",
+                "price": 341.37
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-lace-up-sneakers-961396289": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-lace-up-sneakers-961396289",
+        "text": "Neue Saison Golden Goose Deluxe Brand Superstar-Schn\u00fcrsneaker von \u20ac689,01\u20ac482,31",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/df057ce572ece1f18a3411a7f1ddf113.jpg",
+        "price_40": 482.31,
+        "price_41": 482.31,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 482.31
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 482.31
             }
         ]
     },
@@ -3408,6 +3518,33 @@
             }
         ]
     },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-dad-star-lace-up-sneakers-959668216": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-dad-star-lace-up-sneakers-959668216",
+        "text": "Neue Saison Golden Goose Deluxe Brand Dad-Star-Schn\u00fcrsneaker von \u20ac708,05\u20ac495,63",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/b70191fdc62fc67cbd6918b5e78e9239.jpg",
+        "price_40": 495.63,
+        "price_41": 495.63,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 557.59
+            },
+            {
+                "date": "2026-04-23 13:17",
+                "price": 495.63
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 557.59
+            },
+            {
+                "date": "2026-04-23 13:17",
+                "price": 495.63
+            }
+        ]
+    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lace-up-sneakers-961347912": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-lace-up-sneakers-961347912",
         "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Schn\u00fcrsneaker \u20ac708,05\u20ac477,05",
@@ -3440,25 +3577,6 @@
             {
                 "date": "2026-04-23 14:18",
                 "price": 477.05
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slide-high-top-sneakers-97352654": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slide-high-top-sneakers-97352654",
-        "text": "Golden Goose Deluxe Brand Slide High-Top-Sneakers \u20ac774,61\u20ac534,09",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/dbc4bcf1cf8a691aef551a483aa367c1.jpg",
-        "price_40": 534.09,
-        "price_41": 534.09,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 534.09
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 534.09
             }
         ]
     },
@@ -3498,6 +3616,60 @@
             {
                 "date": "2026-04-29 16:17",
                 "price": 419.94
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slide-high-top-sneakers-97352654": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slide-high-top-sneakers-97352654",
+        "text": "Golden Goose Deluxe Brand Slide High-Top-Sneakers \u20ac774,61\u20ac534,09",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/dbc4bcf1cf8a691aef551a483aa367c1.jpg",
+        "price_40": 534.09,
+        "price_41": 534.09,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 534.09
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 534.09
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-low-top-sneakers-962648156": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-low-top-sneakers-962648156",
+        "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Low-Top Sneakers \u20ac708,05\u20ac433,68",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f203f4413c65b569da74bc9e12aaf7cd.jpg",
+        "price_40": 433.68,
+        "price_41": 433.68,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 464.66
+            },
+            {
+                "date": "2026-04-16 11:17",
+                "price": 452.27
+            },
+            {
+                "date": "2026-04-21 08:17",
+                "price": 433.68
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 464.66
+            },
+            {
+                "date": "2026-04-16 11:17",
+                "price": 452.27
+            },
+            {
+                "date": "2026-04-21 11:17",
+                "price": 433.68
             }
         ]
     },
@@ -3670,82 +3842,94 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-964330423": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-964330423",
-        "text": "Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac577,15\u20ac429,26",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/22b6bd3dfcca7086bf7fb2b685bc29bd.jpg",
-        "price_40": 429.26,
-        "price_41": 429.26,
-        "history_40": [
-            {
-                "date": "2026-04-30 16:17",
-                "price": 429.26
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-30 16:17",
-                "price": 429.26
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-963118970": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-lace-up-sneakers-963118970",
-        "text": "Neue Saison Golden Goose Deluxe Brand Super Star Schn\u00fcrschuhe \u20ac612,85\u20ac402,18",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/1f75ee30da0d0498b19bb659392bf97d.jpg",
-        "price_40": 402.18,
-        "price_41": 402.18,
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-studded-star-sneakers-963119015": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-studded-star-sneakers-963119015",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar Studded Star Sneakers \u20ac749,70\u20ac518,23",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/fbcc1889f45f4cf2b4d7bd8bf78d24e8.jpg",
+        "price_40": 518.23,
+        "price_41": 518.23,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
-                "price": 439.72
+                "price": 532.29
             },
             {
-                "date": "2026-04-16 11:17",
-                "price": 407.55
+                "date": "2026-04-14 21:17",
+                "price": 544.47
             },
             {
-                "date": "2026-04-19 06:17",
-                "price": 440.66
+                "date": "2026-04-14 22:17",
+                "price": 532.29
             },
             {
-                "date": "2026-04-23 13:17",
-                "price": 402.18
+                "date": "2026-04-14 23:17",
+                "price": 544.47
+            },
+            {
+                "date": "2026-04-17 08:17",
+                "price": 518.23
             }
         ],
         "history_41": [
             {
                 "date": "2026-04-13 13:28",
-                "price": 439.72
+                "price": 532.29
             },
             {
-                "date": "2026-04-16 11:17",
-                "price": 407.55
-            },
-            {
-                "date": "2026-04-21 08:17",
-                "price": 402.18
+                "date": "2026-04-17 09:17",
+                "price": 518.23
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sole-lace-up-sneakers-959182600": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sole-lace-up-sneakers-959182600",
-        "text": "Neue Saison Golden Goose Deluxe Brand Schn\u00fcrschuhe mit Laufsohle \u20ac665,21\u20ac465,65",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f9d805f49116d75556deb1a1a1cf9e54.jpg",
-        "price_40": 465.65,
-        "price_41": 465.65,
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-marathon-sneakers-962142477": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-marathon-sneakers-962142477",
+        "text": "Neue Saison Golden Goose Deluxe Brand Marathon Low-Top-Sneaker \u20ac553,35\u20ac363,14",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/dbeb1a4c63af33c1127b57c395533c3f.jpg",
+        "price_40": 363.14,
+        "price_41": 363.14,
+        "history_40": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 390.68
+            },
+            {
+                "date": "2026-04-15 18:17",
+                "price": 387.34
+            },
+            {
+                "date": "2026-04-23 10:17",
+                "price": 363.14
+            }
+        ],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 390.68
+            },
+            {
+                "date": "2026-04-15 18:17",
+                "price": 387.34
+            },
+            {
+                "date": "2026-04-23 06:17",
+                "price": 363.14
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sole-lace-up-sneakers-959717290": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sole-lace-up-sneakers-959717290",
+        "text": "Neue Saison Golden Goose Deluxe Brand Schn\u00fcrschuhe mit Laufsohle \u20ac648,55\u20ac453,98",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/b2f510bf94b983f76e91f3dd4616e593.jpg",
+        "price_40": 453.98,
+        "price_41": 453.98,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
                 "price": 465.65
             },
             {
-                "date": "2026-04-16 06:17",
+                "date": "2026-04-23 13:17",
                 "price": 453.98
-            },
-            {
-                "date": "2026-04-16 14:17",
-                "price": 465.65
             }
         ],
         "history_41": [
@@ -3754,80 +3938,8 @@
                 "price": 465.65
             },
             {
-                "date": "2026-04-16 06:17",
+                "date": "2026-04-23 13:17",
                 "price": 453.98
-            },
-            {
-                "date": "2026-04-23 14:18",
-                "price": 465.65
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-956753118": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-low-top-sneakers-956753118",
-        "text": "Golden Goose Deluxe Brand Super Star Low-Top-Sneaker von \u20ac618,80\u20ac541,45",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f9ee7ce81a23d971b36673a7f1e82197.jpg",
-        "price_40": 541.45,
-        "price_41": null,
-        "history_40": [
-            {
-                "date": "2026-05-01 08:17",
-                "price": 541.45
-            }
-        ],
-        "history_41": []
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-960815296": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-960815296",
-        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac577,15\u20ac404,00",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/a3f20c6666ca9b4cf0419e7371ca5e1a.jpg",
-        "price_40": 404.0,
-        "price_41": 404.0,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 415.67
-            },
-            {
-                "date": "2026-04-23 13:17",
-                "price": 404.0
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 415.67
-            },
-            {
-                "date": "2026-04-23 13:17",
-                "price": 404.0
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sneakers-959666275": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-sneakers-959666275",
-        "text": "Neue Saison Golden Goose Deluxe Brand Laufschuhe der Marke Golden Goose Deluxe \u20ac612,85\u20ac429,00",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/628ccec7ac8f90f86fa45936910afe81.jpg",
-        "price_40": 429.0,
-        "price_41": 429.0,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 482.62
-            },
-            {
-                "date": "2026-04-23 12:17",
-                "price": 429.0
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 482.62
-            },
-            {
-                "date": "2026-04-23 12:17",
-                "price": 429.0
             }
         ]
     },
@@ -3850,75 +3962,33 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-sky-star-high-top-sneakers-956752288": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-sky-star-high-top-sneakers-956752288",
-        "text": "Neue Saison Golden Goose Deluxe Brand Sky Star High-Top-Sneakers \u20ac724,71\u20ac507,30",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/7926111e3e971619b5fabad1cb5af0d6.jpg",
-        "price_40": 507.3,
-        "price_41": 507.3,
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-low-top-sneakers-961615290": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-low-top-sneakers-961615290",
+        "text": "Neue Saison Golden Goose Deluxe Brand Ballstar Low-Top-Sneaker von \u20ac606,90\u20ac531,04",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/9dc3d66a8a09fd660f141363108ea880.jpg",
+        "price_40": 378.75,
+        "price_41": 531.04,
         "history_40": [
             {
                 "date": "2026-04-13 13:28",
-                "price": 507.3
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 507.3
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983308": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-soul-star-low-top-sneakers-960983308",
-        "text": "Golden Goose Deluxe Brand Soul Star Low-Top-Sneaker \u20ac470,05\u20ac341,37",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f109496c3c0c9400baddf188305f520a.jpg",
-        "price_40": 341.37,
-        "price_41": 341.37,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 353.14
+                "price": 404.0
             },
             {
-                "date": "2026-04-17 08:17",
-                "price": 341.37
+                "date": "2026-04-23 06:17",
+                "price": 378.75
             }
         ],
         "history_41": [
             {
                 "date": "2026-04-13 13:28",
-                "price": 353.14
-            },
-            {
-                "date": "2026-04-17 09:17",
-                "price": 341.37
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-lace-up-sneakers-961396289": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-superstar-lace-up-sneakers-961396289",
-        "text": "Neue Saison Golden Goose Deluxe Brand Superstar-Schn\u00fcrsneaker von \u20ac689,01\u20ac482,31",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/df057ce572ece1f18a3411a7f1ddf113.jpg",
-        "price_40": 482.31,
-        "price_41": 482.31,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 482.31
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 482.31
+                "price": 531.04
             }
         ]
     },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-dad-low-top-sneakers-957030277": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-dad-low-top-sneakers-957030277",
         "text": "Neue Saison Golden Goose Deluxe Brand Niedrige Sneakers \u201eRunning Dad\u201c von \u20ac708,05\u20ac415,09",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/b706f970a7123ceaed0f035862ff1767.jpg",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/8651806b0fce971046464563859470ce.jpg",
         "price_40": 415.09,
         "price_41": 415.09,
         "history_40": [
@@ -3988,68 +4058,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-dad-star-lace-up-sneakers-959668216": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-dad-star-lace-up-sneakers-959668216",
-        "text": "Neue Saison Golden Goose Deluxe Brand Dad-Star-Schn\u00fcrsneaker von \u20ac708,05\u20ac495,63",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/b70191fdc62fc67cbd6918b5e78e9239.jpg",
-        "price_40": 495.63,
-        "price_41": 495.63,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 557.59
-            },
-            {
-                "date": "2026-04-23 13:17",
-                "price": 495.63
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 557.59
-            },
-            {
-                "date": "2026-04-23 13:17",
-                "price": 495.63
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-low-top-sneakers-962648156": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-forty-2-low-top-sneakers-962648156",
-        "text": "Neue Saison Golden Goose Deluxe Brand Forty 2 Low-Top Sneakers \u20ac708,05\u20ac433,68",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f203f4413c65b569da74bc9e12aaf7cd.jpg",
-        "price_40": 433.68,
-        "price_41": 433.68,
-        "history_40": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 464.66
-            },
-            {
-                "date": "2026-04-16 11:17",
-                "price": 452.27
-            },
-            {
-                "date": "2026-04-21 08:17",
-                "price": 433.68
-            }
-        ],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 464.66
-            },
-            {
-                "date": "2026-04-16 11:17",
-                "price": 452.27
-            },
-            {
-                "date": "2026-04-21 11:17",
-                "price": 433.68
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-running-lace-up-sneakers-951548217",
         "text": "Neue Saison Golden Goose Deluxe Brand Laufschuhe zum Schn\u00fcren \u20ac612,85\u20ac429,00",
@@ -4087,66 +4095,6 @@
             }
         ]
     },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-948076750": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-948076750",
-        "text": "Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac606,90\u20ac531,04",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/1d3a0b040bc7d581e32c6363c9156e38.jpg",
-        "price_40": null,
-        "price_41": 531.04,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-24 19:17",
-                "price": 531.04
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-v-star-lace-up-sneakers-963039349": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-v-star-lace-up-sneakers-963039349",
-        "text": "Neue Saison Golden Goose Deluxe Brand V-Star-Schn\u00fcrsneaker \u20ac577,15\u20ac378,75",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/85742ba1649a6bc851474d443defc2ab.jpg",
-        "price_40": null,
-        "price_41": 378.75,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-21 07:17",
-                "price": 404.0
-            },
-            {
-                "date": "2026-04-23 08:17",
-                "price": 378.75
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-mid-star-high-top-sneakers-928509938": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-mid-star-high-top-sneakers-928509938",
-        "text": "Golden Goose Deluxe Brand Mid Star High-Top-Sneaker \u20ac665,21\u20ac494,75",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f4ff1ebc5bf2c8b30d925b6d9bbf401a.jpg",
-        "price_40": null,
-        "price_41": 494.75,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 494.75
-            }
-        ]
-    },
-    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-studded-sneakers-955952779": {
-        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-studded-sneakers-955952779",
-        "text": "Golden Goose Deluxe Brand Super Star Sneakers mit Nieten \u20ac767,55\u20ac604,45",
-        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/27fb5ed961604de27ab68c6887177420.jpg",
-        "price_40": null,
-        "price_41": 604.45,
-        "history_40": [],
-        "history_41": [
-            {
-                "date": "2026-04-13 13:28",
-                "price": 604.45
-            }
-        ]
-    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slip-on-sneakers-949047751": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-slip-on-sneakers-949047751",
         "text": "Neue Saison Golden Goose Deluxe Brand VCE Penstar Slip-On-Sneaker \u20ac416,50\u20ac340,49",
@@ -4162,6 +4110,20 @@
             {
                 "date": "2026-04-29 12:17",
                 "price": 340.49
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-948076750": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-ballstar-lace-up-sneakers-948076750",
+        "text": "Golden Goose Deluxe Brand Ballstar-Schn\u00fcrsneaker von \u20ac606,90\u20ac531,04",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/1d3a0b040bc7d581e32c6363c9156e38.jpg",
+        "price_40": null,
+        "price_41": 531.04,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-24 19:17",
+                "price": 531.04
             }
         ]
     },
@@ -4198,6 +4160,24 @@
             {
                 "date": "2026-04-23 15:17",
                 "price": 449.4
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-v-star-lace-up-sneakers-963039349": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-v-star-lace-up-sneakers-963039349",
+        "text": "Neue Saison Golden Goose Deluxe Brand V-Star-Schn\u00fcrsneaker \u20ac577,15\u20ac378,75",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/85742ba1649a6bc851474d443defc2ab.jpg",
+        "price_40": null,
+        "price_41": 378.75,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-21 07:17",
+                "price": 404.0
+            },
+            {
+                "date": "2026-04-23 08:17",
+                "price": 378.75
             }
         ]
     },
@@ -4385,6 +4365,20 @@
             }
         ]
     },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-mid-star-high-top-sneakers-928509938": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-mid-star-high-top-sneakers-928509938",
+        "text": "Golden Goose Deluxe Brand Mid Star High-Top-Sneaker \u20ac665,21\u20ac494,75",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/f4ff1ebc5bf2c8b30d925b6d9bbf401a.jpg",
+        "price_40": null,
+        "price_41": 494.75,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 494.75
+            }
+        ]
+    },
     "https://www.cettire.com/de/products/golden-goose-deluxe-brand-round-toe-low-top-sneakers-951660757": {
         "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-round-toe-low-top-sneakers-951660757",
         "text": "Golden Goose Deluxe Brand Runde Zehen-Low-Top-Sneaker der Marke Golden Goose Deluxe \u20ac546,21\u20ac310,66",
@@ -4451,6 +4445,20 @@
             {
                 "date": "2026-04-13 13:28",
                 "price": 402.7
+            }
+        ]
+    },
+    "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-studded-sneakers-955952779": {
+        "url": "https://www.cettire.com/de/products/golden-goose-deluxe-brand-super-star-studded-sneakers-955952779",
+        "text": "Golden Goose Deluxe Brand Super Star Sneakers mit Nieten \u20ac767,55\u20ac604,45",
+        "img": "https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/27fb5ed961604de27ab68c6887177420.jpg",
+        "price_40": null,
+        "price_41": 604.45,
+        "history_40": [],
+        "history_41": [
+            {
+                "date": "2026-04-13 13:28",
+                "price": 604.45
             }
         ]
     },
